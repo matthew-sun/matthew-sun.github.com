@@ -35,9 +35,11 @@ js事件绑定，主要有三个问题：<br>
 3.事件绑定在ie下，回调函数的this指向会被指向window<br>
 先说一下第二个问题，其它的问题可用代码示例。
 
+    //fn
     obj.addEventListener(ev,fn,false);
 这个参数的名字叫做useCapture，是一个布尔值，名为冒泡获取，false代表的含义是由里向外，true是由外向里。举个栗子：
 
+    //html
     <div id="outDiv">
       <div id="middleDiv">
         <div id="inDiv">请在此点击鼠标。</div>
