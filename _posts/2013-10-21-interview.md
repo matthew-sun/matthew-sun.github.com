@@ -43,7 +43,9 @@ js事件绑定，主要有三个问题：<br>
         <div id="inDiv">请在此点击鼠标。</div>
       </div>
     </div>
+
 + 全为 false 时，触发顺序为：inDiv、middleDiv、outDiv；
 + 全为 true 时，触发顺序为：outDiv、middleDiv、inDiv；
 + outDiv 为 true，其他为 false 时，触发顺序为：outDiv、inDiv、middleDiv；
 + middleDiv 为 true，其他为 false 时，触发顺序为：middleDiv、inDiv、outDiv；
+
