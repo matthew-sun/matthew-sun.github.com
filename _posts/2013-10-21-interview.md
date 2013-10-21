@@ -31,6 +31,10 @@ Bootstrap的流行导致了越来越多的人去研究前端css框架，而在�
 ###事件绑定
 js事件绑定，主要有三个问题：
 
+- 事件绑定在标准浏览器和IE浏览器下的兼容性写法
+- 事件绑定在标准浏览器下函数的第三个参数的含义
+- 事件绑定在ie下，回调函数的this指向会被指向window
+
 先说一下第二个问题，其它的问题可用代码示例。
 
     obj.addEventListener(ev,fn,false);
@@ -48,7 +52,7 @@ js事件绑定，主要有三个问题：
 - outDiv 为 true，其他为 false 时，触发顺序为：outDiv、inDiv、middleDiv；
 - middleDiv 为 true，其他为 false 时，触发顺序为：middleDiv、inDiv、outDiv；
 
-bindEvent解决attachEvent的this指向问题:
+使用匿名函数解决attachEvent回调函数的this指向问题:
 
     function bindEvent(elem,type,fn){
         if(elem.attachEvent){
@@ -58,4 +62,40 @@ bindEvent解决attachEvent的this指向问题:
         }else{
             elem.addEventListener(type,fn,false);
         }
+    }
+
+###js阻止默认事件和阻止冒泡的兼容写法
+1.停止事件冒泡 
+
+    //如果提供了事件对象，则这是一个非IE浏览器
+    if ( e && e.stopPropagation )
+    //因此它支持W3C的stopPropagation()方法
+    e.stopPropagation(); 
+    else
+    //否则，我们需要使用IE的方式来取消事件冒泡 
+    window.event.cancelBubble = true;
+    return false;
+
+2.阻止浏览器的默认行为
+
+    //如果提供了事件对象，则这是一个非IE浏览器 
+    if ( e && e.preventDefault ) 
+    //阻止默认浏览器动作(W3C) 
+    e.preventDefault(); 
+    else
+    //IE中阻止函数器默认动作的方式 
+    window.event.returnValue = false; 
+    return false;
+
+当然jquery中帮我集成了一个解决方案，那就是return false，已解决了兼容性问题。
+
+###获取元素的位置
+这道面试题考察的是，有没有获取父元素的位置，加上自身的offset值，代码如下：
+
+    function getIE(e){
+        var t=e.offsetTop;
+        var l=e.offsetLeft;
+        while(e=e.offsetParent){
+        t+=e.offsetTop;
+        l+=e.offsetLeft;
     }
