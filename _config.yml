@@ -80,6 +80,7 @@ JB :
     provider : disqus
     disqus :
       short_name : matthewnotes
+      url : http://matthew-sun.github.io
     #livefyre :
       #site_id : 123
     #intensedebate :
