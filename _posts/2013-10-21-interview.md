@@ -31,9 +31,9 @@ Bootstrap的流行导致了越来越多的人去研究前端css框架，而在�
 ###事件绑定
 js事件绑定，主要有三个问题：
 
-1. 事件绑定在标准浏览器和IE浏览器下的兼容性写法
-2. 事件绑定在标准浏览器下函数的第三个参数的含义
-3. 事件绑定在ie下，回调函数的this指向会被指向window
+- 事件绑定在标准浏览器和IE浏览器下的兼容性写法
+- 事件绑定在标准浏览器下函数的第三个参数的含义
+- 事件绑定在ie下，回调函数的this指向会被指向window
 
 先说一下第二个问题，其它的问题可用代码示例。
 
@@ -47,8 +47,19 @@ js事件绑定，主要有三个问题：
       </div>
     </div>
 
-+ 全为 false 时，触发顺序为：inDiv、middleDiv、outDiv；
-+ 全为 true 时，触发顺序为：outDiv、middleDiv、inDiv；
-+ outDiv 为 true，其他为 false 时，触发顺序为：outDiv、inDiv、middleDiv；
-+ middleDiv 为 true，其他为 false 时，触发顺序为：middleDiv、inDiv、outDiv；
+- 全为 false 时，触发顺序为：inDiv、middleDiv、outDiv；
+- 全为 true 时，触发顺序为：outDiv、middleDiv、inDiv；
+- outDiv 为 true，其他为 false 时，触发顺序为：outDiv、inDiv、middleDiv；
+- middleDiv 为 true，其他为 false 时，触发顺序为：middleDiv、inDiv、outDiv；
 
+bindEvent解决attachEvent的this指向问题:
+
+    function bindEvent(elem,type,fn){
+        if(elem.attachEvent){
+            elem.attachEvent("on"+type,function(){
+                fn.apply(elem,arguments);
+            });
+        }else{
+            elem.addEventListener(type,fn,false);
+        }
+    }
