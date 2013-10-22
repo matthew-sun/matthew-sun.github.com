@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Matthew Notes
+title: iKitty Notes
 ---
 {% include JB/setup %}
 
