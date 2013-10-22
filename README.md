@@ -1,1 +1,0 @@
-ikitty front-end notes
