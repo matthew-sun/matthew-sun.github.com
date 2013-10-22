@@ -94,8 +94,9 @@ js事件绑定，主要有三个问题：<br>
         var t=e.offsetTop;
         var l=e.offsetLeft;
         while(e=e.offsetParent){
-        t+=e.offsetTop;
-        l+=e.offsetLeft;
+        	t+=e.offsetTop;
+        	l+=e.offsetLeft;
+		}
     }
 
 #hr问题：
