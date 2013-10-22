@@ -72,3 +72,52 @@ description: 规范是前端工程师评判代码的一杆重要标尺，本文�
 比如不要出现这种情况：&lt;div class="class1 class2 class3 class4"&gt;&lt;/div&gt;
 + 对于一个语义化的内部标签，应尽量避免使用className。<br>
 比如在这样一个列表中，li标签中的itm应去除：&lt;ul class="m-help"&gt;&lt;li class="itm"&gt;&lt;/li&gt;&lt;li class="itm"&gt;&lt;/li>&lt;/ul&gt;
+###严格的嵌套
++ 尽可能以最严格的xhtml strict标准来嵌套，比如内联元素不能包含块级元素等等。
++ 正确闭合标签且必须闭合。
+###严格的属性
++ 属性和值全部小写，每个属性都必须有一个值，每个值必须加双引号。
++ 没有值的属性必须使用自己的名称做为值（checked、disabled、readonly、selected等等）。
++ 可以省略style标签和script标签的type属性。
+###内容类型决定使用的语义标签
++ 在网页中某种类型的内容必定需要某种特定的HTML标签来承载，也就是我们常常提到的根据你的内容语义化HTML结构。
+###加强“资源型”内容的可访问性和可用性
++ 在资源型的内容上加入描述文案，比如给img添加alt属性，在audio内加入文案和链接等等。
+###加强“不可见”内容的可访问性
++ 背景图上的文字应该同时写在html中，并使用css使其不可见，有利于搜索引擎抓取你的内容，也可以在css失效的情况下看到内容。
+###适当使用实体
++ 以实体代替与HTML语法相同的字符，避免浏览解析错误。<br>
+<table class="table table-bordered table-hover"> 
+    <caption>常用HTML字符实体（建议使用实体）：</caption> 
+    <thead> 
+        <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+    </thead> 
+    <tbody> 
+        <tr><td>&quot;</td><td>双引号</td><td>&amp;quot;</td><td>&amp;#34;</td></tr> 
+        <tr><td>&amp;</td><td>&amp;符</td><td>&amp;amp;</td><td>&amp;#38;</td></tr> 
+        <tr><td>&lt;</td><td>左尖括号（小于号）</td><td>&amp;lt;</td><td>&amp;#60;</td></tr> 
+        <tr><td>&gt;</td><td>右尖括号（大于号）</td><td>&amp;gt;</td><td>&amp;#62;</td></tr> 
+        <tr><td>&nbsp;</td><td>空格</td><td>&amp;nbsp;</td><td>&amp;#160;</td></tr> 
+        <tr><td>&#12288;</td><td>中文全角空格</td><td>&nbsp;</td><td>&amp;#12288;</td></tr> 
+    </tbody> 
+</table> 
+<table class="table table-bordered table-hover"> 
+    <caption>常用特殊字符实体（不建议使用实体）：</caption> 
+    <thead> 
+        <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+    </thead> 
+    <tbody> 
+        <tr><td>&yen;</td><td>元</td><td>&amp;yen;</td><td>&amp;#165;</td></tr> 
+        <tr><td>&brvbar;</td><td>断竖线</td><td>&amp;brvbar;</td><td>&amp;#166;</td></tr> 
+        <tr><td>&copy;</td><td>版权</td><td>&amp;copy;</td><td>&amp;#169;</td></tr> 
+        <tr><td>&reg;</td><td>注册商标R</td><td>&amp;reg;</td><td>&amp;#174;</td></tr> 
+        <tr><td>&trade;</td><td>商标TM</td><td>&amp;trade;</td><td>&amp;#8482;</td></tr> 
+        <tr><td>&middot;</td><td>间隔符</td><td>&amp;middot;</td><td>&amp;#183;</td></tr> 
+        <tr><td>&laquo;</td><td>左双尖括号</td><td>&amp;laquo;</td><td>&amp;#171;</td></tr> 
+        <tr><td>&raquo;</td><td>右双尖括号</td><td>&amp;raquo;</td><td>&amp;#187;</td></tr> 
+        <tr><td>&deg;</td><td>度</td><td>&amp;deg;</td><td>&amp;#176;</td></tr> 
+        <tr><td>&times;</td><td>乘</td><td>&amp;times;</td><td>&amp;#215;</td></tr> 
+        <tr><td>&divide;</td><td>除</td><td>&amp;divide;</td><td>&amp;#247;</td></tr> 
+        <tr><td>&permil;</td><td>千分比</td><td>&amp;permil;</td><td>&amp;#8240;</td></tr> 
+    </tbody> 
+</table> 
