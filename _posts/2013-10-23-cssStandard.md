@@ -53,241 +53,40 @@ PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行
 - 内部元素根据情况(比如可判定该结构中不会再嵌套其他元素时)可使用短单词命名。<br>
   比如：tit、more。
 #####常用命名词汇<br>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>单词</th><th>描述</th>
-            <th>单词</th><th>描述</th>
-            <th>单词</th><th>描述</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>
-                header
-            </td>
-            <td>头部</td>
-            <td>
-                list
-            </td>
-            <td>列表</td>
-            <td>
-                dig
-            </td>
-            <td>投票 / 顶</td>
-        </tr>
-        <tr>
-            <td>
-                logo
-            </td>
-            <td>
-                logo
-            </td>
-            <td>
-                item
-            </td>
-            <td>列表项</td>
-            <td>
-                bury
-            </td>
-            <td>踩   相对于dig</td>
-        </tr>
-        <tr>
-            <td>
-                nav
-            </td>
-            <td>导航</td>
-            <td>
-                tab
-            </td>
-            <td>切换标签</td>
-            <td>
-                open
-            </td>
-            <td>打开</td>
-        </tr>
-        <tr>
-            <td>
-                container
-            </td>
-            <td>主要容器</td>
-            <td>
-                item
-            </td>
-            <td>列表项</td>
-            <td>
-                get
-            </td>
-            <td>获取</td>
-        </tr>
-        <tr>
-            <td>
-                main
-            </td>
-            <td>主体</td>
-            <td>
-                tips
-            </td>
-            <td>提示气泡框</td>
-            <td>
-                apply
-            </td>
-            <td>申请 / 应用</td>
-        </tr>
-        <tr>
-            <td>
-                sub
-            </td>
-            <td>附属</td>
-            <td>
-                btn
-            </td>
-            <td>按钮 – button的缩写</td>
-            <td>
-                del
-            </td>
-            <td>删除 – delete的缩写</td>
-        </tr>
-        <tr>
-            <td>
-                title
-            </td>
-            <td>标题</td>
-            <td>
-                ico
-            </td>
-            <td>图标 – icon的缩写</td>
-            <td>
-                close
-            </td>
-            <td>关闭</td>
-        </tr>
-        <tr>
-            <td>
-                copyright
-            </td>
-            <td>版权</td>
-            <td>
-                wrapper
-            </td>
-            <td>包裹容器</td>
-            <td>
-                send
-            </td>
-            <td>发送</td>
-        </tr>
-        <tr>
-            <td>
-                quick
-            </td>
-            <td>快速_xx</td>
-            <td>
-                guide/hint/tip
-            </td>
-            <td>指引，提示</td>
-            <td>
-                advice
-            </td>
-            <td>建议</td>
-        </tr>
-        <tr>
-            <td>
-                layer
-            </td>
-            <td>浮层，[notice]_layer</td>
-            <td>
-                panel
-            </td>
-            <td>面板</td>
-            <td>
-                channel
+<table class="table table-bordered table-hover"> 
+    常用HTML字符实体（建议使用实体）：
+    <thead> 
+        <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+    </thead> 
+    <tbody> 
+        <tr><td>&quot;</td><td>双引号</td><td>&amp;quot;</td><td>&amp;#34;</td></tr> 
+        <tr><td>&amp;</td><td>&amp;符</td><td>&amp;amp;</td><td>&amp;#38;</td></tr> 
+        <tr><td>&lt;</td><td>左尖括号（小于号）</td><td>&amp;lt;</td><td>&amp;#60;</td></tr> 
+        <tr><td>&gt;</td><td>右尖括号（大于号）</td><td>&amp;gt;</td><td>&amp;#62;</td></tr> 
+        <tr><td>&nbsp;</td><td>空格</td><td>&amp;nbsp;</td><td>&amp;#160;</td></tr> 
+    </tbody> 
+</table> 
+<table class="table table-bordered table-hover"> 
+    常用特殊字符实体（不建议使用实体）：
+    <thead> 
+        <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
+    </thead> 
+    <tbody> 
+        <tr><td>&yen;</td><td>元</td><td>&amp;yen;</td><td>&amp;#165;</td></tr> 
+        <tr><td>&brvbar;</td><td>断竖线</td><td>&amp;brvbar;</td><td>&amp;#166;</td></tr> 
+        <tr><td>&copy;</td><td>版权</td><td>&amp;copy;</td><td>&amp;#169;</td></tr> 
+        <tr><td>&reg;</td><td>注册商标R</td><td>&amp;reg;</td><td>&amp;#174;</td></tr> 
+        <tr><td>&trade;</td><td>商标TM</td><td>&amp;trade;</td><td>&amp;#8482;</td></tr> 
+        <tr><td>&middot;</td><td>间隔符</td><td>&amp;middot;</td><td>&amp;#183;</td></tr> 
+        <tr><td>&laquo;</td><td>左双尖括号</td><td>&amp;laquo;</td><td>&amp;#171;</td></tr> 
+        <tr><td>&raquo;</td><td>右双尖括号</td><td>&amp;raquo;</td><td>&amp;#187;</td></tr> 
+        <tr><td>&deg;</td><td>度</td><td>&amp;deg;</td><td>&amp;#176;</td></tr> 
+        <tr><td>&times;</td><td>乘</td><td>&amp;times;</td><td>&amp;#215;</td></tr> 
+        <tr><td>&divide;</td><td>除</td><td>&amp;divide;</td><td>&amp;#247;</td></tr> 
+        <tr><td>&permil;</td><td>千分比</td><td>&amp;permil;</td><td>&amp;#8240;</td></tr> 
+    </tbody> 
+</table> 
 
-            </td>
-            <td>频道</td>
-        </tr>
-        <tr>
-            <td>
-                trigger
-            </td>
-            <td>触发点</td>
-            <td>
-                gg
-            </td>
-            <td>广告</td>
-            <td>
-                major/main
-            </td>
-            <td>主屏/主要内容</td>
-        </tr>
-        <tr>
-            <td>
-                sidebar
-            </td>
-            <td>侧栏</td>
-            <td>
-                ext/extra
-            </td>
-            <td>扩展内容</td>
-            <td>
-                notice
-            </td>
-            <td>公告</td>
-        </tr>
-    </tbody>
-</table>
-
-<table class="table table-bordered table-hover">
-    <tbody>
-        <tr>
-            <th>状态</th>
-            <th>描述</th>
-        </tr>
-        <tr>
-            <td> hover </td>
-            <td>划过态 – 通常只生效于使用指针交互的设备</td>
-        </tr>
-        <tr>
-            <td> disabled </td>
-            <td>不可用状态 – 用于 form 、button 等。</td>
-        </tr>
-        <tr>
-            <td>
-                active
-            </td>
-            <td>激活态 – 通常指 button /   link 被按下的状态</td>
-        </tr>
-        <tr>
-            <td>
-                current
-            </td>
-            <td>当前态 – 用于nav 、 tab、steps、flow步骤提示。强调的是页面或模块当前状态。</td>
-        </tr>
-        <tr>
-            <td>
-                selected
-            </td>
-            <td>选中态 – 用于 radio 、 button 等。强调的是按钮本身的状态。</td>
-        </tr>
-        <tr>
-            <td>
-                focus
-            </td>
-            <td>获取焦点状态 – 通常用于具有   tab-index 属性的元素。常见的如 button 、 form element</td>
-        </tr>
-        <tr>
-            <td>
-                show
-            </td>
-            <td>显示状态 – 控制对象显示，属于非常用词汇。</td>
-        </tr>
-        <tr>
-            <td>
-                hide
-            </td>
-            <td>隐藏状态 – 控制对象隐藏。</td>
-        </tr>
-    </tbody>
-</table>
 
 ###编码规范
 #####书写规范
