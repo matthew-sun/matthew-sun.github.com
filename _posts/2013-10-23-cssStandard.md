@@ -67,24 +67,57 @@ PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行
     </tbody> 
 </table> 
 <table class="table table-bordered table-hover"> 
-    常用特殊字符实体（不建议使用实体）：
-    <thead> 
-        <tr><th>字符</th><th>名称</th><th>实体名</th><th>实体数</th></tr> 
-    </thead> 
-    <tbody> 
-        <tr><td>&yen;</td><td>元</td><td>&amp;yen;</td><td>&amp;#165;</td></tr> 
-        <tr><td>&brvbar;</td><td>断竖线</td><td>&amp;brvbar;</td><td>&amp;#166;</td></tr> 
-        <tr><td>&copy;</td><td>版权</td><td>&amp;copy;</td><td>&amp;#169;</td></tr> 
-        <tr><td>&reg;</td><td>注册商标R</td><td>&amp;reg;</td><td>&amp;#174;</td></tr> 
-        <tr><td>&trade;</td><td>商标TM</td><td>&amp;trade;</td><td>&amp;#8482;</td></tr> 
-        <tr><td>&middot;</td><td>间隔符</td><td>&amp;middot;</td><td>&amp;#183;</td></tr> 
-        <tr><td>&laquo;</td><td>左双尖括号</td><td>&amp;laquo;</td><td>&amp;#171;</td></tr> 
-        <tr><td>&raquo;</td><td>右双尖括号</td><td>&amp;raquo;</td><td>&amp;#187;</td></tr> 
-        <tr><td>&deg;</td><td>度</td><td>&amp;deg;</td><td>&amp;#176;</td></tr> 
-        <tr><td>&times;</td><td>乘</td><td>&amp;times;</td><td>&amp;#215;</td></tr> 
-        <tr><td>&divide;</td><td>除</td><td>&amp;divide;</td><td>&amp;#247;</td></tr> 
-        <tr><td>&permil;</td><td>千分比</td><td>&amp;permil;</td><td>&amp;#8240;</td></tr> 
-    </tbody> 
+    <tbody>
+            <tr>
+                <th>状态</th>
+                <th>描述</th>
+            </tr>
+            <tr>
+                <td> hover </td>
+                <td>划过态 – 通常只生效于使用指针交互的设备</td>
+            </tr>
+            <tr>
+                <td> disabled </td>
+                <td>不可用状态 – 用于 form 、button 等。</td>
+            </tr>
+            <tr>
+                <td>
+                    active
+                </td>
+                <td>激活态 – 通常指 button /   link 被按下的状态</td>
+            </tr>
+            <tr>
+                <td>
+                    current
+                </td>
+                <td>当前态 – 用于nav 、 tab、steps、flow步骤提示。强调的是页面或模块当前状态。</td>
+            </tr>
+            <tr>
+                <td>
+                    selected
+                </td>
+                <td>选中态 – 用于 radio 、 button 等。强调的是按钮本身的状态。</td>
+            </tr>
+            <tr>
+                <td>
+                    focus
+                </td>
+                <td>获取焦点状态 – 通常用于具有   tab-index 属性的元素。常见的如 button 、 form element</td>
+            </tr>
+            <tr>
+                <td>
+                    show
+                </td>
+                <td>显示状态 – 控制对象显示，属于非常用词汇。</td>
+            </tr>
+            <tr>
+                <td>
+                    hide
+                </td>
+                <td>隐藏状态 – 控制对象隐藏。</td>
+            </tr>
+        </tbody>
+
 </table> 
 
 
