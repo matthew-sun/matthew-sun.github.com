@@ -1,0 +1,8 @@
+/* 简单样式重置需替换 */
+* {margin: 0; padding: 0;}
+
+/* 滚动条盒子 */
+.scroll_box {position: relative; width: 400px; height: 300px; overflow: hidden; margin: 100px auto;}
+.container {position: absolute; margin-right: 20px;*padding-right: 20px; width: auto;}
+.scrollTools {position: absolute; width: 16px; height: 100%; top: 0; right: 0; background: #ccc; cursor: pointer; display: none;}
+.dragger { position: absolute; width: 16px; height: 16px; background: red; top: 0; left: 0; cursor: pointer;}
