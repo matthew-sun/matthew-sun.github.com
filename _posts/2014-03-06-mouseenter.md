@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 为什么使用mouseenter而不是使用mouseover
-tags: [ js ]
+tags: [ Javascript ]
 category: Frontend
 description: mouseover事件与mouseenter事件的区别
 ---
