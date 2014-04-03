@@ -14,3 +14,37 @@ mouseover会触发冒泡事件，即不论鼠标指针穿过被选元素或其�
 对应mouseleave，mouseenter子元素不会反复触发事件，否则在IE中经常有闪烁情况发生。
 
 下面不如来看一个例子来说明这种情况：[Demo]
+
+###2014/04/03日对这篇博文的修正：(不用JQuery，用原生Js)
+mouseenter和mouseleave在IE下是有onmouseenter的一系列事件支持的，但是在非IE浏览器如Chrome、FF下就没有这类事件。如果使用的是JQuery开发，则没有问题，因为mouseenter已经被封装成了一个JQuery事件，支持所有浏览器。<br>
+但是在使用原生JS时，怎么模拟这个方法？
+以下提供一个模拟的方案：
+
+    //ele为目标元素，type为事件类型不用'on'，func为事件响应函数
+    var addEvent=function(ele,type,func){
+        if(window.document.all) 
+            ele.attachEvent('on'+type,func);//ie系列直接添加执行
+        else{//ff
+            if(type==='mouseenter')
+                ele.addEventListener('mouseover',this.withoutChildFunction(func),false);
+            else if(type==='mouseleave')
+                ele.addEventListener('mouseout',this.withoutChildFunction(func),false);
+            else
+                ele.addEventListener(type,func,false);      
+        }
+    }
+    var withoutChildFunction=function(func){
+        return function(e){
+            var parent=e.relatedTarget;//上一响应mouseover/mouseout事件的元素
+            while(parent!=this&&parent){//假如存在这个元素并且这个元素不等于目标元素（被赋予mouseenter事件的元素）
+                try{
+                    parent=parent.parentNode;}//上一响应的元素开始往上寻找目标元素
+                catch(e){
+                    break;
+                }
+     
+            }
+            if(parent!=this)//以mouseenter为例，假如找不到，表明当前事件触发点不在目标元素内
+            func(e);//运行目标方法，否则不运行
+        }
+    }
