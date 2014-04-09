@@ -1,0 +1,79 @@
+/*===== 提示基类 =====*/
+    .ui_hint{
+        _zoom:1;
+        position:relative;
+        border-width:1px;
+        border-style:solid;
+        box-shadow:2px 2px 2px rgba(0,0,0,0.1);
+        text-align:left;
+    }
+
+        .ui_hint_inner{
+            padding:4px 10px 6px 10px;
+            padding:6px 10px 4px 10px\9;
+            _padding:4px 10px 6px 10px;
+        }
+
+            /*===== 指示箭头 =====*/
+                .ui_hint_arrow1,
+                .ui_hint_arrow2,
+                .ui_hint_arrow3,
+                .ui_hint_arrow4,
+                .ui_hint_arrow5,
+                .ui_hint_arrow6,
+                .ui_hint_arrow7,
+                .ui_hint_arrow8{
+                    overflow:hidden;
+                    position:absolute;
+                    background-image:url("../img/hint.png");
+                    background-repeat:no-repeat;
+                }
+
+
+                .ui_hint_arrow1,
+                .ui_hint_arrow5{width:13px; height:7px; background-position:-1px 0;}
+
+                .ui_hint_arrow2,
+                .ui_hint_arrow6{width:7px; height:13px; background-position:0 -17px;}
+
+                .ui_hint_arrow3,
+                .ui_hint_arrow7{width:13px; height:7px; background-position:-1px -8px;}
+
+                .ui_hint_arrow4,
+                .ui_hint_arrow8{width:7px; height:14px; background-position:-8px -17px;}
+
+                .ui_hint_arrow1{left:5px; top:-7px;}
+                .ui_hint_arrow2{left:-7px; top:5px;}
+                .ui_hint_arrow3{left:5px; bottom:-7px;}
+                .ui_hint_arrow4{right:-7px; top:5px;}
+                .ui_hint_arrow5{right:5px; top:-7px;}
+                .ui_hint_arrow6{left:-7px; bottom:5px;}
+                .ui_hint_arrow7{right:5px; bottom:-7px;}
+                .ui_hint_arrow8{right:-7px; bottom:5px;}
+
+
+        /*===== 强提示 =====*/
+            .ui_hint{
+                border-color:#FFCC99;
+                background-color:#FFFFE3;
+            }
+
+
+        /*===== 弱提示 =====*/
+            .ui_hint_weak{
+                border-color:#CCC;
+                background-color:#FFF;
+            }
+
+            
+            .ui_hint_weak .ui_hint_arrow1,
+            .ui_hint_weak .ui_hint_arrow5{background-position:-1px -32px;}
+
+            .ui_hint_weak .ui_hint_arrow2,
+            .ui_hint_weak .ui_hint_arrow6{background-position:0 -49px;}
+
+            .ui_hint_weak .ui_hint_arrow3,
+            .ui_hint_weak .ui_hint_arrow7{background-position:-1px -40px;}
+
+            .ui_hint_weak .ui_hint_arrow4,
+            .ui_hint_weak .ui_hint_arrow8{background-position:-8px -49px;}

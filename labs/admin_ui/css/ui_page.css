@@ -1,0 +1,14 @@
+/*===== 翻页样式 =====*/
+.ui_page { height: 28px; background: #d1d1d1;}
+.ui_page .ui_page_select { float: left; margin: 3px 0 0 3px; width: 64px; height: 16px; border: 1px solid #9d9d9d; display: inline; *height: 20px; *margin-top: 4px;}
+.ui_page .ui_page_control { height: 22px; margin-top: 4px; float: left; margin-left: 22px; display: inline; *margin-top: 5px;}
+.ui_page .ui_page_control li { float: left; width: 16px; height: 16px; display: inline;}
+.ui_page .ui_page_control .ui_page_pagination { width: 50px; color: #333; padding-left: 4px; *padding-left: 2px; margin-top: -1px; *margin-top: -4px; }
+.ui_page .ui_page_control .ui_page_pagination i,
+.ui_page .ui_page_control .ui_page_pagination span { *display: inline-block; *margin-bottom: 3px;}
+.ui_page .ui_page_control .ui_page_pagination .ui_input { width: 10px; *width: 12px; height: 14px; *height: 16px; padding-left:6px; *padding-left: 3px; padding-bottom: 4px;}
+.ui_page .ui_page_control .ui_page_fresh { margin-left: 16px; width: 14px; height: 14px; vertical-align:middle;}
+.ui_page .ui_page_showlog { float: right; margin-right: 10px; line-height: 28px;}
+
+
+ 

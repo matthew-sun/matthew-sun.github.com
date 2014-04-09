@@ -1,0 +1,50 @@
+/*===== 基础按钮样式 =====*/
+.ui_btn { display: inline-block; *display: inline; padding: 3px 20px; color: #fff; font-size: 12px;  text-align: center;
+		 cursor: pointer; background-color: #427ee4; background-repeat: repeat-x;
+		  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,0)), to(rgba(230,230,230,.05)));
+		  background-image: -webkit-linear-gradient(rgba(255,255,255,0), rgba(230,230,230,.05));
+		  background-image: -moz-linear-gradient(rgba(255,255,255,0),rgba(230,230,230,.05));
+		  background-image: -o-linear-gradient(rgba(255,255,255,0), rgba(230,230,230,.05));
+		  background-image: linear-gradient(rgba(255,255,255,0), rgba(230,230,230,.05));
+		  border: 1px solid #427ee4;
+		  border-bottom: 1px solid #3463de;
+		  *padding: 2px 12px;
+		  -webkit-border-radius: 2px;
+		     -moz-border-radius: 2px;
+		          border-radius: 2px;
+		  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+		  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+		  *zoom: 1;
+		  outline: 0;
+}
+.ui_btn:hover { background-color: #609af1; border-bottom-color: #4379cb; color: #fff;}
+
+/*===== mini版按钮样式 =====*/
+.ui_btn_mini { padding: 1px 12px;}
+
+/*===== large版按钮样式 =====*/
+.ui_btn_large { padding: 1px 11px; }
+
+/*===== disable版按钮样式 =====*/
+.ui_btn_disable {cursor: default; border-color: #E1E1E1; background: #E1E1E1; color: #999;}
+.ui_btn_disable:hover {cursor: default; border-color: #E1E1E1; background: #E1E1E1; color: #999;}
+
+/*===== 灰色版 =====*/
+.ui_btn_bg1 {background-color: #efefef; border: 1px solid #b5b5b5; color: #4d4d4d;}
+.ui_btn_bg1:hover {background-color: #f6f6f6;  border-bottom: 1px solid #b5b5b5; color: #4d4d4d;}
+
+/*===== 红色版 =====*/
+.ui_btn_bg2 {background-color: #bd362f; border: 1px solid #bd362f; color: #fff; }
+.ui_btn_bg2:hover {background-color: #cc4039;  border-bottom: 1px solid #bd362f; color: #fff;}
+
+/*===== 黄色版 =====*/
+.ui_btn_bg3 {background-color: #f47c09; border: 1px solid #fa8a05; color: #fff;}
+.ui_btn_bg3:hover {background-color: #fd9821;  border-bottom: 1px solid #fa8a05; color: #fff;}
+
+/*IE 7优雅降级*/
+button.ui_btn,
+input.ui_btn { *padding:4px 12px 0 12px;}
+button.ui_btn_mini,
+input.ui_btn_mini { *padding: 1px 6px 0 6px;}
+button.ui_btn_large,
+input.ui_btn_large { *padding: 1px 0px 1px 0px;}

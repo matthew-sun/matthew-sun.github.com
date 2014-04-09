@@ -1,0 +1,646 @@
+/*======= icon小图标样式，遵循bootstrap =======*/
+[class^="ui_icon_"],
+[class*=" ui_icon_"] {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-top: 1px;
+  *margin-right: .3em;
+  line-height: 14px;
+  vertical-align: text-top;
+  background-image: url("../img/glyphicons-halflings.png");
+  background-position: 14px 14px;
+  background-repeat: no-repeat;
+}
+
+/* White ui_icons with optional class, or on hover/focus/active states of certain elements */
+.ui_icon_white {
+  background-image: url("../img/glyphicons-halflings-white.png");
+}
+
+/*blue UI*/
+.ui_icon_blue,
+a:hover > [class^="ui_icon_"],
+a:hover > [class*=" ui_icon_"],
+a[class^="ui_icon_"]:hover ,
+a[class*=" ui_icon_"]:hover {
+  cursor: pointer;
+  background-image: url("../img/glyphicons-halflings-blue.png");
+}
+
+.ui_icon_glass {
+  background-position: 0 0;
+}
+
+.ui_icon_music {
+  background-position: -24px 0;
+}
+
+.ui_icon_search {
+  background-position: -48px 0;
+}
+
+.ui_icon_envelope {
+  background-position: -72px 0;
+}
+
+.ui_icon_heart {
+  background-position: -96px 0;
+}
+
+.ui_icon_star {
+  background-position: -120px 0;
+}
+
+.ui_icon_star_empty {
+  background-position: -144px 0;
+}
+
+.ui_icon_user {
+  background-position: -168px 0;
+}
+
+.ui_icon_film {
+  background-position: -192px 0;
+}
+
+.ui_icon_th_large {
+  background-position: -216px 0;
+}
+
+.ui_icon_th {
+  background-position: -240px 0;
+}
+
+.ui_icon_th_list {
+  background-position: -264px 0;
+}
+
+.ui_icon_ok {
+  background-position: -288px 0;
+}
+
+.ui_icon_remove {
+  background-position: -312px 0;
+}
+
+.ui_icon_zoom-in {
+  background-position: -336px 0;
+}
+
+.ui_icon_zoom_out {
+  background-position: -360px 0;
+}
+
+.ui_icon_off {
+  background-position: -384px 0;
+}
+
+.ui_icon_signal {
+  background-position: -408px 0;
+}
+
+.ui_icon_cog {
+  background-position: -432px 0;
+}
+
+.ui_icon_trash {
+  background-position: -456px 0;
+}
+
+.ui_icon_home {
+  background-position: 0 -24px;
+}
+
+.ui_icon_file {
+  background-position: -24px -24px;
+}
+
+.ui_icon_time {
+  background-position: -48px -24px;
+}
+
+.ui_icon_road {
+  background-position: -72px -24px;
+}
+
+.ui_icon_download_alt {
+  background-position: -96px -24px;
+}
+
+.ui_icon_download {
+  background-position: -120px -24px;
+}
+
+.ui_icon_upload {
+  background-position: -144px -24px;
+}
+
+.ui_icon_inbox {
+  background-position: -168px -24px;
+}
+
+.ui_icon_play_circle {
+  background-position: -192px -24px;
+}
+
+.ui_icon_repeat {
+  background-position: -216px -24px;
+}
+
+.ui_icon_refresh {
+  background-position: -240px -24px;
+}
+
+.ui_icon_list_alt {
+  background-position: -264px -24px;
+}
+
+.ui_icon_lock {
+  background-position: -287px -24px;
+}
+
+.ui_icon_flag {
+  background-position: -312px -24px;
+}
+
+.ui_icon_headphones {
+  background-position: -336px -24px;
+}
+
+.ui_icon_volume_off {
+  background-position: -360px -24px;
+}
+
+.ui_icon_volume_down {
+  background-position: -384px -24px;
+}
+
+.ui_icon_volume_up {
+  background-position: -408px -24px;
+}
+
+.ui_icon_qrcode {
+  background-position: -432px -24px;
+}
+
+.ui_icon_barcode {
+  background-position: -456px -24px;
+}
+
+.ui_icon_tag {
+  background-position: 0 -48px;
+}
+
+.ui_icon_tags {
+  background-position: -25px -48px;
+}
+
+.ui_icon_book {
+  background-position: -48px -48px;
+}
+
+.ui_icon_bookmark {
+  background-position: -72px -48px;
+}
+
+.ui_icon_print {
+  background-position: -96px -48px;
+}
+
+.ui_icon_camera {
+  background-position: -120px -48px;
+}
+
+.ui_icon_font {
+  background-position: -144px -48px;
+}
+
+.ui_icon_bold {
+  background-position: -167px -48px;
+}
+
+.ui_icon_italic {
+  background-position: -192px -48px;
+}
+
+.ui_icon_text_height {
+  background-position: -216px -48px;
+}
+
+.ui_icon_text_width {
+  background-position: -240px -48px;
+}
+
+.ui_icon_align_left {
+  background-position: -264px -48px;
+}
+
+.ui_icon_align_center {
+  background-position: -288px -48px;
+}
+
+.ui_icon_align_right {
+  background-position: -312px -48px;
+}
+
+.ui_icon_align_justify {
+  background-position: -336px -48px;
+}
+
+.ui_icon_list {
+  background-position: -360px -48px;
+}
+
+.ui_icon_indent_left {
+  background-position: -384px -48px;
+}
+
+.ui_icon_indent_right {
+  background-position: -408px -48px;
+}
+
+.ui_icon_facetime_video {
+  background-position: -432px -48px;
+}
+
+.ui_icon_picture {
+  background-position: -456px -48px;
+}
+
+.ui_icon_pencil {
+  background-position: 0 -72px;
+}
+
+.ui_icon_map_marker {
+  background-position: -24px -72px;
+}
+
+.ui_icon_adjust {
+  background-position: -48px -72px;
+}
+
+.ui_icon_tint {
+  background-position: -72px -72px;
+}
+
+.ui_icon_edit {
+  background-position: -96px -72px;
+}
+
+.ui_icon_share {
+  background-position: -120px -72px;
+}
+
+.ui_icon_check {
+  background-position: -144px -72px;
+}
+
+.ui_icon_move {
+  background-position: -168px -72px;
+}
+
+.ui_icon_step_backward {
+  background-position: -192px -72px;
+}
+
+.ui_icon_fast_backward {
+  background-position: -216px -72px;
+}
+
+.ui_icon_backward {
+  background-position: -240px -72px;
+}
+
+.ui_icon_play {
+  background-position: -264px -72px;
+}
+
+.ui_icon_pause {
+  background-position: -288px -72px;
+}
+
+.ui_icon_stop {
+  background-position: -312px -72px;
+}
+
+.ui_icon_forward {
+  background-position: -336px -72px;
+}
+
+.ui_icon_fast_forward {
+  background-position: -360px -72px;
+}
+
+.ui_icon_step_forward {
+  background-position: -384px -72px;
+}
+
+.ui_icon_eject {
+  background-position: -408px -72px;
+}
+
+.ui_icon_chevron_left {
+  background-position: -432px -72px;
+}
+
+.ui_icon_chevron_right {
+  background-position: -456px -72px;
+}
+
+.ui_icon_plus_sign {
+  background-position: 0 -96px;
+}
+
+.ui_icon_minus_sign {
+  background-position: -24px -96px;
+}
+
+.ui_icon_remove_sign {
+  background-position: -48px -96px;
+}
+
+.ui_icon_ok_sign {
+  background-position: -72px -96px;
+}
+
+.ui_icon_question_sign {
+  background-position: -96px -96px;
+}
+
+.ui_icon_info_sign {
+  background-position: -120px -96px;
+}
+
+.ui_icon_screenshot {
+  background-position: -144px -96px;
+}
+
+.ui_icon_remove_circle {
+  background-position: -168px -96px;
+}
+
+.ui_icon_ok_circle {
+  background-position: -192px -96px;
+}
+
+.ui_icon_ban_circle {
+  background-position: -216px -96px;
+}
+
+.ui_icon_arrow_left {
+  background-position: -240px -96px;
+}
+
+.ui_icon_arrow_right {
+  background-position: -264px -96px;
+}
+
+.ui_icon_arrow_up {
+  background-position: -289px -96px;
+}
+
+.ui_icon_arrow_down {
+  background-position: -312px -96px;
+}
+
+.ui_icon_share_alt {
+  background-position: -336px -96px;
+}
+
+.ui_icon_resize_full {
+  background-position: -360px -96px;
+}
+
+.ui_icon_resize_small {
+  background-position: -384px -96px;
+}
+
+.ui_icon_plus {
+  background-position: -408px -96px;
+}
+
+.ui_icon_minus {
+  background-position: -433px -96px;
+}
+
+.ui_icon_asterisk {
+  background-position: -456px -96px;
+}
+
+.ui_icon_exclamation_sign {
+  background-position: 0 -120px;
+}
+
+.ui_icon_gift {
+  background-position: -24px -120px;
+}
+
+.ui_icon_leaf {
+  background-position: -48px -120px;
+}
+
+.ui_icon_fire {
+  background-position: -72px -120px;
+}
+
+.ui_icon_eye_open {
+  background-position: -96px -120px;
+}
+
+.ui_icon_eye_close {
+  background-position: -120px -120px;
+}
+
+.ui_icon_warning_sign {
+  background-position: -144px -120px;
+}
+
+.ui_icon_plane {
+  background-position: -168px -120px;
+}
+
+.ui_icon_calendar {
+  background-position: -192px -120px;
+}
+
+.ui_icon_random {
+  width: 16px;
+  background-position: -216px -120px;
+}
+
+.ui_icon_comment {
+  background-position: -240px -120px;
+}
+
+.ui_icon_magnet {
+  background-position: -264px -120px;
+}
+
+.ui_icon_chevron_up {
+  background-position: -288px -120px;
+}
+
+.ui_icon_chevron_down {
+  background-position: -313px -119px;
+}
+
+.ui_icon_retweet {
+  background-position: -336px -120px;
+}
+
+.ui_icon_shopping_cart {
+  background-position: -360px -120px;
+}
+
+.ui_icon_folder_close {
+  width: 16px;
+  background-position: -384px -120px;
+}
+
+.ui_icon_folder_open {
+  width: 16px;
+  background-position: -408px -120px;
+}
+
+.ui_icon_resize_vertical {
+  background-position: -432px -119px;
+}
+
+.ui_icon_resize_horizontal {
+  background-position: -456px -118px;
+}
+
+.ui_icon_hdd {
+  background-position: 0 -144px;
+}
+
+.ui_icon_bullhorn {
+  background-position: -24px -144px;
+}
+
+.ui_icon_bell {
+  background-position: -48px -144px;
+}
+
+.ui_icon_certificate {
+  background-position: -72px -144px;
+}
+
+.ui_icon_thumbs_up {
+  background-position: -96px -144px;
+}
+
+.ui_icon_thumbs_down {
+  background-position: -120px -144px;
+}
+
+.ui_icon_hand_right {
+  background-position: -144px -144px;
+}
+
+.ui_icon_hand_left {
+  background-position: -168px -144px;
+}
+
+.ui_icon_hand_up {
+  background-position: -192px -144px;
+}
+
+.ui_icon_hand_down {
+  background-position: -216px -144px;
+}
+
+.ui_icon_circle_arrow_right {
+  background-position: -240px -144px;
+}
+
+.ui_icon_circle_arrow_left {
+  background-position: -264px -144px;
+}
+
+.ui_icon_circle_arrow_up {
+  background-position: -288px -144px;
+}
+
+.ui_icon_circle_arrow_down {
+  background-position: -312px -144px;
+}
+
+.ui_icon_globe {
+  background-position: -336px -144px;
+}
+
+.ui_icon_wrench {
+  background-position: -360px -144px;
+}
+
+.ui_icon_tasks {
+  background-position: -384px -144px;
+}
+
+.ui_icon_filter {
+  background-position: -408px -144px;
+}
+
+.ui_icon_briefcase {
+  background-position: -432px -144px;
+}
+
+.ui_icon_fullscreen {
+  background-position: -456px -144px;
+}
+
+
+/*===== 图标基础样式 =====*/
+    .ui_pop_ico_success,
+    .ui_pop_ico_error,
+    .ui_pop_ico_info,
+    .ui_pop_ico_success_small,
+    .ui_pop_ico_error_small,
+    .ui_pop_ico_info_small,
+    .ui_pop_ico_success_mini,
+    .ui_pop_ico_error_mini,
+    .ui_pop_ico_info_mini,
+    .ui_pop_ico_faq,
+    .ui_pop_ico_hot,
+    .ui_pop_ico_sinawb,
+    .ui_pop_ico_py,
+    .ui_pop_ico_qq,
+    .ui_pop_ico_qzone,
+    .ui_pop_ico_txwb,
+    .ui_pop_ico_ques { 
+        overflow:hidden;
+        display:inline-block;
+        background-image:url("../img/ico.png");
+        font-size:0;
+        line-height:0;
+        vertical-align:middle;
+    }
+    
+
+    /*===== 弹出层常用 =====*/
+        .ui_pop_ico_success,
+        .ui_pop_ico_error,
+        .ui_pop_ico_info,
+        .ui_pop_ico_ques {width:46px; height:46px;}
+            .ui_pop_ico_success{background-position:0 0;}
+            .ui_pop_ico_error{background-position:0 -50px;}
+            .ui_pop_ico_info{background-position:0 -100px;}
+            .ui_pop_ico_ques { background-position: 0 -150px;}
+
+
+        .ui_pop_ico_success_small,
+        .ui_pop_ico_error_small,
+        .ui_pop_ico_info_small{width:32px; height:32px;}
+            .ui_pop_ico_success_small{background-position:-100px 0;}
+            .ui_pop_ico_error_small{background-position:-100px -50px;}
+            .ui_pop_ico_info_small{background-position:-100px -100px;}
+
+
+        .ui_pop_ico_success_mini,
+        .ui_pop_ico_error_mini,
+        .ui_pop_ico_info_mini{width:12px; height:12px;}
+            .ui_pop_ico_success_mini{background-position:-50px 0;}
+            .ui_pop_ico_error_mini{background-position:-50px -50px;}
+            .ui_pop_ico_info_mini{background-position:-50px -100px;}

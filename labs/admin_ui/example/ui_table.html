@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <link rel="stylesheet" href="../css/ui.css">
+   <style type="text/css">
+      /*仅为测试css*/
+      body { width: 1000px; margin: 0 auto; margin-top: 100px;}
+      .t_test { margin-top: 70px;}
+      .t_test_eidt { display: inline-block; *zoom: 1; *display: inline;}
+      .t_test_eidt li { float: left; margin: 0 14px;}
+      .t_test_eidt li a i { margin-right: 4px;}
+   </style>
+</head>
+<body>
+  <!-- S 表格布局 -->
+  <div class="ui_layout_bg t_test">
+    <table class="ui_table_grid">
+      <tbody>
+        <tr>
+          <td class="ui_table_grid_tit">
+            <i>*</i>商品池名称:</td>
+          <td>
+            <input type="text" class="ui_input ui_input_xlarge"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="ui_table_grid_tit">
+            <i>*</i>所属地区:</td>
+          <td>
+            <select class="ui_select">
+              <option value ="volvo">Volvo</option>
+              <option value ="saab">Saab</option>
+              <option value="opel">Opel</option>
+              <option value="audi">Audi</option>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td class="ui_table_grid_tit">
+            <i>*</i>商品池描述商品池描述:</td>
+          <td>
+            <textarea class="ui_txt"></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- E 表格布局 -->
+  <!-- S 表格 -->
+  <div class="ui_layout_bg t_test">
+    <table class="ui_table">
+      <colgroup>
+        <col width="76px;">
+        <col width="186px;">
+        <col width="106px;">
+        <col width="91px;">
+        <col width="148px;">
+        <col width="237px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>模版名称</th>
+          <th>易迅|网购</th>
+          <th>模板类型</th>
+          <th>创建时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <th colspan="6">
+          <!-- S 翻页组件 -->
+          <div class="ui_page">
+           <select class="ui_select ui_page_select"s>
+            <option value ="15">15</option>
+            <option value ="14">14</option>
+            <option value ="13">13</option>
+            <option value ="12">12</option>
+            <option value ="11">11</option>
+            <option value ="10">10</option>
+            <option value ="9">9</option>
+            <option value ="8">8</option>
+            <option value ="7">7</option>
+            <option value ="6">6</option>
+            <option value ="5">5</option>
+            <option value ="4">4</option>
+            <option value ="3">3</option>
+            <option value ="2">2</option>
+            <option value ="1">1</option>
+          </select>
+          <ul class="ui_page_control">
+            <li>
+              <a href="javascript:;" title="第一页" >
+                <i class="ui_icon_step_backward"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;" title="上一页">
+                <i class="ui_icon_chevron_left"></i>
+              </a>
+            </li>
+            <li class="ui_page_pagination">
+              <input class="ui_input ui_input_mini" type="text" value="2"/>
+              <i>/</i>
+              <span>8</span>
+            </li>
+            <li>
+              <a href="javascript:;" title="下一页">
+                <i class="ui_icon_chevron_right"></i>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:;" title="最后一页">
+                <i class="ui_icon_step_forward"></i>
+              </a>
+            </li>
+            <li class="ui_page_fresh">
+              <a href="javascript:;" title="刷新">
+                <i class="ui_icon_refresh"></i>
+              </a>
+            </li>
+          </ul>
+          <span class="ui_page_showlog">
+            显示记录从<i>1</i>到<i>15</i>，总数<i>104</i>条
+          </span>
+          </div>
+          <!-- E 翻页组件 -->
+        </th>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td>11188</td>
+          <td>新人频道_0716</td>
+          <td>易迅</td>
+          <td>非固定模板</td>
+          <td>2013-07-16 14:27:35</td>
+          <td>
+            <ul class="t_test_eidt">
+              <li>
+                <a href="javascript:;" title="编辑" >
+                  <i class="ui_icon_edit"></i>编辑
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;" title="删除" >
+                  <i class="ui_icon_trash"></i>删除
+                </a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td>11188</td>
+          <td>新人频道_0716</td>
+          <td>易迅</td>
+          <td>非固定模板</td>
+          <td>2013-07-16 14:27:35</td>
+          <td>
+            <ul class="t_test_eidt">
+              <li>
+                <a href="javascript:;" title="编辑" >
+                  <i class="ui_icon_edit"></i>编辑
+                </a>
+              </li>
+              <li>
+                <a href="javascript:;" title="删除" >
+                  <i class="ui_icon_trash"></i>删除
+                </a>
+              </li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+      
+    </table>
+    
+  </div>
+  <!-- E 表格 -->
+</body>
+</html>
