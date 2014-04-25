@@ -6,8 +6,8 @@ category: Frontend
 description: 对于一个触发了haslayout的块级元素，且它的相邻元素是具有定位属性的，那么这个元素在IE6/7下的margin-top会失效。
 ---
 [Demo]: /labs/iebug-mt/index.html
-[normal]: /images/mt_normal.png
-[bug]: /images/mt_bug.png
+[normal]: /images/mt-normal.png
+[bug]: /images/mt-bug.png
 
 ###问题描述：
 对于一个触发了haslayout的块级元素，且它的相邻元素是具有定位属性的，那么这个元素在IE6/7下的margin-top会失效。<br>
@@ -16,7 +16,6 @@ description: 对于一个触发了haslayout的块级元素，且它的相邻元�
 	<div class="pos">定位元素</div>
     <div class="bug">margin-top失效元素</div>
 	css代码：
-	* { margin: 0; padding: 0; color: #fff;}
     .pos { position: fixed; left: 0; top: 0; width: 100%; background: blue; height: 40px; line-height: 40px; }
     .bug { margin-top: 40px; background: red; height: 40px; line-height: 40px;  }
 标准浏览器下输出的结果：<br>
