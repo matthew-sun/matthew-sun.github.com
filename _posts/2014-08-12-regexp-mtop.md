@@ -5,36 +5,39 @@ tags: [ iebug ]
 category: Frontend
 description: 经常在工作中会使用到正则表达式，但是总是很容易忘记，写这篇文章的目的是在帮助我记忆正则表达式的常用语法，希望遇到写正则的时候看这篇文章立马就会了。
 ---
-[Source]: /labs/regexp/validate.js
+[Source]: https://github.com/matthew-sun/matthew-sun.github.com/blob/master/labs/regexp/validate.js
 
 ###常用字符串操作：
 
-		indexOf(searchvalue,fromindex):方法返回某个指定字符串在字符中首次出现的位置
-			参数：1.必须，检索的字符串值
-				 2.可选，字符串开始检索的位置，合法取值是0-stringObject.length-1，不填，则从开始检索
-		substring(start,stop)：提取字符串中介于两个指定下标之间的字符
-			参数：1.必须，一个非负的整数，要提取的子串的第一个字符在stringObject中的位置
-				 2.可选，一个非负的整数，要比提取的子串的最后一个字符在stringObject中多1，若省略，则匹配到stringObject的结尾。
-		charAt(index)：返回指定位置的字符
-			参数：1.必须，字符在字符串中的下标
-		split(separator,howmany)：把一个字符串分割成字符串数组
-			参数：1.必须，字符串或正则表达式，从该参数指定的地方分割stringObject
-				 2.可选，指定返回数组的最大长度，如果没有设置参数，整个字符串都会被分割
+	indexOf(searchvalue,fromindex):方法返回某个指定字符串在字符中首次出现的位置
+		参数：1.必须，检索的字符串值
+             2.可选，字符串开始检索的位置，合法取值是0-stringObject.length-1，不填，则从开始检索
+	substring(start,stop)：提取字符串中介于两个指定下标之间的字符
+		参数：1.必须，一个非负的整数，要提取的子串的第一个字符在stringObject中的位置
+             2.可选，一个非负的整数，要比提取的子串的最后一个字符在stringObject中多1，若省略，则匹配到stringObject的结尾。
+	charAt(index)：返回指定位置的字符
+        参数：1.必须，字符在字符串中的下标
+	split(separator,howmany)：把一个字符串分割成字符串数组
+        参数：1.必须，字符串或正则表达式，从该参数指定的地方分割stringObject
+			 2.可选，指定返回数组的最大长度，如果没有设置参数，整个字符串都会被分割
+
+
 ###正则表达式：
 两个写法：1.new RegExp(pattern,attributes)  在用于传参数时必须使用<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 2./re/g
+
 ####常用的四个方法：
 	
-		RegExpObject.test(string)：检测字符串是否匹配一个模式，返回布尔值
-			参数：1.必须，要检测的字符串
-		RegExpObject.search(regexp)：检索字符串中指定的子字符串，或检索与正则表达式想匹配的字符串
-		stringObject.match(regexp)：正则去匹配字符串，如果匹配成功，就返回匹配成功的数组，如果匹配不成功，就返回null
-			示例：
-			var str="1 plus 2 equal 3"
-			console.log(str.match(/\d+/g))==>[1,2,3]
-		stringObject.replace(regexp,replacement)：正则去匹配字符串，匹配成功的字符去替换成新的字符串
-			参数：replacement:可以使字符串，也可以是一个回调函数($0==>母亲，$1==>第一个子项，$2==>第二个子项..)
+	RegExpObject.test(string)：检测字符串是否匹配一个模式，返回布尔值
+		参数：1.必须，要检测的字符串
+	RegExpObject.search(regexp)：检索字符串中指定的子字符串，或检索与正则表达式想匹配的字符串
+	stringObject.match(regexp)：正则去匹配字符串，如果匹配成功，就返回匹配成功的数组，如果匹配不成功，就返回null
+		示例：
+		var str="1 plus 2 equal 3"
+		console.log(str.match(/\d+/g))==>[1,2,3]
+	stringObject.replace(regexp,replacement)：正则去匹配字符串，匹配成功的字符去替换成新的字符串
+		参数：replacement:可以使字符串，也可以是一个回调函数($0==>母亲，$1==>第一个子项，$2==>第二个子项..)
 
 ####正则表达式的写法规则
 
