@@ -27,9 +27,11 @@ IE6/7下输出的产物（bug元素被遮住）：<br><br>
 具体可查看 [Demo]
 
 #####WTF！
+
 ###分析原因：
 一个块级元素，触发了hasLayout（比如设置了宽度高度），并且其前面紧挨着的同级的节点如果为absolute绝对定位或者是固定定位，就会导致这个块级元素在IE6/IE7下面的margin-top失效，看起来就像margin-top:0一样。<br>
 <b>关键词：自身触发haslayout，同级相邻节点定位</b>
+
 ###解决方案：
 1.不使用margin属性：使用padding来代替margin，比如设置其父元素的padding-top，或者设置这个块元素的padding-top，不过要注意padding对其背景的影响。
 
@@ -47,4 +49,5 @@ IE6/7下输出的产物（bug元素被遮住）：<br><br>
 3.去掉失效元素的haslayout属性（特殊场景可使用，一般不推荐）
 	
 	.bug { margin-top: 40px; background: red; line-height: 40px; }
+
 ######希望这篇文章能对你有用，和我一起交流~
