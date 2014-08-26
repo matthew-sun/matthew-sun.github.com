@@ -25,6 +25,7 @@ description: 对于一个触发了haslayout的块级元素，且它的相邻元�
 IE6/7下输出的产物（bug元素被遮住）：<br><br>
 ![bug][bug]<br>
 具体可查看 [Demo]
+
 #####WTF！
 ###分析原因：
 一个块级元素，触发了hasLayout（比如设置了宽度高度），并且其前面紧挨着的同级的节点如果为absolute绝对定位或者是固定定位，就会导致这个块级元素在IE6/IE7下面的margin-top失效，看起来就像margin-top:0一样。<br>
