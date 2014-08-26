@@ -18,6 +18,8 @@ description: 对于一个触发了haslayout的块级元素，且它的相邻元�
 	css代码：
     .pos { position: fixed; left: 0; top: 0; width: 100%; background: blue; height: 40px; line-height: 40px; }
     .bug { margin-top: 40px; background: red; height: 40px; line-height: 40px;  }
+
+
 标准浏览器下输出的结果（正常）：<br><br>
 ![normal][normal]<br>
 IE6/7下输出的产物（bug元素被遮住）：<br><br>
