@@ -22,5 +22,8 @@ H5游戏DEMO合辑
 <li>
     <a href="http://matthew-sun.github.io/labs/h5game-demo/games/plane/index.html">打飞机</a>
 </li>
+<li>
+    <a href="http://matthew-sun.github.io/labs/h5game-demo/games/apple/index.html">你是我的小苹果</a>
+</li>
 </ul>
 ------------------
