@@ -21,13 +21,16 @@ description: 建造一座高楼不能从最高层开始建，要从打地基开�
 ####[Zepto]是一个轻量级的针对现代高级浏览器的JavaScript库， 它与jquery有着类似的api。 如果你会用jquery，那么你也会用zepto。
 ####整个网站采用zepto框架作为底层库，方便对底层js的操控。zepto解决了一些移动端的bug，但是也制造了移动端的一些bug，比如说臭名昭著的Zepto点透bug。
 ###fastclick
-####使用示例：
+###干嘛用的？
+百度搜一下，差不多就知道这货是解决移动端点透bug了哈
+####怎么用：
 	
 	fastclick.attach(document.body);
 ###func
-func.js是在zepto的基础上抽象的一层与业务无关的工具库，实现了一些非常实用的功能，在之后的组件层以及业务层将会被高度复用。比如新建实例的Class方法，自定义事件模块，cookie相关，判断mobile浏览器方法等等。
+[func.js]是在zepto的基础上抽象的一层与业务无关的工具库，实现了一些非常实用的功能，在之后的组件层以及业务层将会被高度复用。比如新建实例的Class方法，自定义事件模块，cookie相关，判断mobile浏览器方法等等。
 ###itpl
-####[itpl]是我自己编写的一套模板引擎，项目地址上有使用方法。
+####什么东西？
+[itpl]是我自己编写的一套模板引擎。
 ####为什么要使用模板引擎？
 	
     for(; i<len ; i++) {
@@ -46,10 +49,13 @@ func.js是在zepto的基础上抽象的一层与业务无关的工具库，实�
     $video.append(pushHtml);
 
 向上面这样多的js代码出现多了，可能你就会感到恶心、痛苦，想迫切的把数据和html字符串给分离开来，这时候使用模板引擎是最好的办法。
+####怎么用？
+[itpl]的项目地址上有使用方法。
 
 ##widgets层（组件层）
 ###common.js
 在写业务层的时候发现，有一些js是很多业务层的代码所公用的，比如说登录相关，浏览器判断相关的等等功能。功能之间肯能彼此是没有任何关系的，所以抽离成一个组件，这不合理，但若是分散开来使用，这不方便。为此，我创建了common.js这个文件夹，在广义上的概念上看他不是任何一个功能抽离的组件，但是他聚合了很多需要跨页面使用的方法，为业务层提供方便调用的API。
+
 ###widgets
 组件js，没什么好说的，就是抽离的一些组件，比如说wipe,dialog,lazyload等等。但是在编写组件层的时候，对这里的组件进行了一些规范，由其是在业务层调用组件代码时，都是直接运行方法名就好了，方便业务层直观简单的调用组件。
 
@@ -245,6 +251,7 @@ func.js是在zepto的基础上抽象的一层与业务无关的工具库，实�
 [官方网站]:http://seajs.org/docs/
 [itpl]:https://github.com/matthew-sun/itpl
 [Mock.js]:http://mockjs.com/
+[func.js]:https://github.com/matthew-sun/MUI/blob/master/src/js/core/func.js
 [grunt打包详解]:http://www.cnblogs.com/yexiaochai/p/3603389.html
 [Zepto]:http://www.html-5.cn/Manual/Zepto/
 [architecture]: http://www.fehouse.com/usr/themes/fe/img/postimg/architecture/architecture.png
