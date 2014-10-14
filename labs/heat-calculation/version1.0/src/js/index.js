@@ -2,7 +2,7 @@
  * @author matthewsun
  *
  * @description 运动热量卡路里计算器
- * @version 1.1 移动支持
+ * @version 1.0 初版
  * 
  * @link matthew-sun@foxmail.com
  * @date 2014/10/13
@@ -131,30 +131,22 @@ HEAT_CONSUMPTION_DATA = {
 }
 
 // 数据缓存
-var cache = [] ,
-    tempCache = [];
+var cache = [];
 
 /**
  * 初始化select框
  */
 
-var setup = (function() {
-    var $oSelect = $('#J_selectOptions') ,
+var initSelect = (function() {
+    var oSelect = document.getElementById('J_selectOptions'),
         aKeys = keys(HEAT_CONSUMPTION_DATA),
         pushHtml = '';
 
     for( var i=0,len=aKeys.length; i<len; i++) {
-        pushHtml += '\
-            <li>\
-                <span class="o_tit">'+ aKeys[i] +'</span>\
-                <span class="o_time"><input type="text" placeholder="0" class="o_minute">分钟</span>\
-                <a href="javascript:;" class="o_okay">\
-                    <span class="o_round"></span>\
-                </a>\
-            </li>';
+        pushHtml += '<option value="'+ i +'">'+ aKeys[i] +'</option>';
     }
 
-    $oSelect.html(pushHtml);
+    oSelect.innerHTML = pushHtml; 
 
 })();
 
@@ -162,88 +154,77 @@ var setup = (function() {
  * 添加事件
  */
 
-var bindEvents = (function() {
-    var $weight = $('#J_weight') ,
-        $oAddBtn = $('#J_addItem') ,
-        $back = $('#J_back') ,
-        $sure = $('#J_sure') ,
-        $index = $('#J_index') ,
-        $options = $('#J_options') ;
+var addEvent = (function() {
+    var oAddBtn = document.getElementById('J_add') ,
+        minute = document.getElementById('d_minutes'),
+        oCalculate = document.getElementById('J_calculate');
 
-    // 处理点透bug
-    FastClick.attach(document.body);
+    bindEvent(oAddBtn,'click',function() {
+        addItem();
+    })
 
-    $weight.on('keyup',function() {
-
-        if( isNumber($weight.val()) ) {
-            calculate();
-
-            if($weight.val() > 300) {
-                alert('请输入您正确的体重！');
-                return ;
-            }
-
-        }else {
-            alert('请输入您正确的体重！');
+    bindEvent(minute,'keyup',function(e) {
+        if( e.keyCode == 13 ) {
+            addItem();
         }
     })
 
-    $oAddBtn.on('click',function() {
-        var $okay = $('.o_okay') ;
-
-        $index.hide();
-        $options.show();
-
-        $okay.off().on('click',function() {
-            var me = $(this);
-            sureItem(me);
-        })
-    })
-
-    $back.on('click',function() {
-        tempCache = [];
-        $('.o_minute').val('');
-        $('.o_okay').removeClass('on');
-        $options.hide();
-        $index.show();
-    })
-
-    $sure.on('click',function() {
-        sureItemList();
+    bindEvent(oCalculate,'click',function() {
         calculate();
-
-        var $removeItem = $('.remove_item');
-        $removeItem.on('click',function() {
-            var me = $(this);
-            removeItem(me);
-        })
-
     })
 
 })();
 
 /**
- * 确认运动以及时间选项
- * 
- * @param  {[type]} obj $(this)
+ * 增加一个项
  */
+function addItem() {
+    var oSelect = document.getElementById('J_selectOptions') ,
+        option = oSelect.options[oSelect.selectedIndex].text ,
+        minute = document.getElementById('d_minutes').value ,
+        oUl = document.getElementById('J_output');
+        pushHtml = '' ,
+        aData = [] ;
 
-function sureItem(obj) {
-    var itemName = obj.siblings('.o_tit').text() ,
-        itemTime = obj.siblings('.o_time').find('.o_minute').val() ,
-        tempArr = [];
-
-    if( !isNumber(itemTime) || itemTime == 0) {
-        alert('请输入正确的运动的时间！');
+    if( option === '' ) {
+        alert('请选择一项运动');
+        return ;
+    }else if( !isNumber(minute) ) {
+        alert('请输入正确的运动的时间');
         return ;
     }
 
-    tempArr.push(itemName);
-    tempArr.push(itemTime);
-    tempCache.push(tempArr);
+    pushHtml = '<li>运动：'+ option +'，时间：'+ minute +'分钟<a href="javascript:;" onclick="removeItem(event);">删除</a></li>';
+    
+    aData.push(option);
+    aData.push(minute);
+    cache.push(aData);
 
-    obj.addClass('on');
+    oUl.innerHTML += pushHtml;
 
+}
+
+/**
+ * 删除一个项
+ */
+function removeItem(event) {
+    var oUl = document.getElementById('J_output') ,
+        aLi = oUl.getElementsByTagName('li') ,
+        position = -1;
+
+    Array.prototype.forEach.call(aLi,function(li,index){
+        if( event.target.parentNode == li ) {
+            position = index;
+        }
+    })
+
+    if( position === -1) {
+        return ;
+    }else {
+        cache.splice(position,1);
+    }
+
+    oUl.removeChild(event.target.parentNode);
 }
 
 /**
@@ -252,73 +233,20 @@ function sureItem(obj) {
  */
 
 function calculate() {
-    var weight = $('#J_weight').val() ,
-        $oResult = $('#J_outResult') , 
-        $nums = $('#J_itemNums') ,
+
+    var weight = document.getElementById('d_weight').value ,
+        oResult = document.getElementById('J_outResult') ,
         result = 0;
 
-    if(cache.length > 0) {
-        for(var i=0,len=cache.length; i<len; i++) {
-            result += Math.floor(weight*HEAT_CONSUMPTION_DATA[cache[i][0]]*cache[i][1]/60);
-        }
-        $nums.addClass('on');
-    }else {
-        result = 0;
-        $nums.removeClass('on');
-    }
-    $nums.html(cache.length);
-
-    $oResult.html(result);
-
-}
-
-
-/**
- * 确定一个项目组
- */
-function sureItemList() {
-    var $index = $('#J_index') ,
-        $options = $('#J_options') ;
-
-    if(tempCache.length == 0) {
-        alert('请选择一项运动');
+    if( !isNumber(weight) ) {
+        alert('请输入您正确的体重！');
         return ;
     }
 
-    for(var i=0,len=tempCache.length; i<len; i++) {
-        cache.push(tempCache[i]);
-    }
-    tempCache = [];
-
-    $('.o_minute').val('');
-    $('.o_okay').removeClass('on');
-    $options.hide();
-    $index.show();
-
-    var pushHtml = '' ,
-        $items = $('#J_items');
     for(var i=0,len=cache.length; i<len; i++) {
-
-        pushHtml += '\
-                    <li>\
-                        <span class="i_tit">'+ cache[i][0] +'</span>\
-                        <a href="javascript:;" class="remove_item">\
-                            <i class="fa fa-minus"></i>\
-                        </a>\
-                        <span class="i_time"><span>'+ cache[i][1] +'</span>分钟</span>\
-                    </li> ' 
+        result += Math.floor(weight*HEAT_CONSUMPTION_DATA[cache[i][0]]*cache[i][1]/60);
     }
 
-    $items.html(pushHtml);
-}
+    oResult.innerText = result;
 
-
-/**
- * 删除一个项
- */
-function removeItem(me) {
-    var position = me.index()-1;
-    me.parent().remove();
-    cache.splice(position,1);
-    calculate();
 }
