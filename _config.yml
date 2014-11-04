@@ -14,7 +14,7 @@ markdown: redcarpet
 # Themes are encouraged to use these universal variables 
 # so be sure to set them if your theme uses them.
 #
-title : matthewsun's blog
+title : MatthewsunNotes
 tagline: 
 author :
   name : matthew
@@ -86,7 +86,7 @@ JB :
     provider : false
     #provider : disqus
     #disqus :
-      #short_name : ikittynotes
+      #short_name : matthewsunnotes
     #livefyre :
       #site_id : 123
     #intensedebate :
