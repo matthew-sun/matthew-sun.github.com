@@ -1,0 +1,38 @@
+/*===== 弹出层组件 =====*/
+    .ui_pop{
+        overflow:hidden;
+        position:absolute;
+        z-index:999;
+        left:50%;
+        top:50%;
+        border:1px solid #CCC;
+        background-color:#FFFFFF;
+    }
+
+    /*===== 弹窗头部 =====*/
+        .ui_pop_hd{overflow:hidden; height:35px; background: #d5d5d5; line-height:35px;}
+            .ui_pop_tit{margin-left:10px; font-size:12px; font-weight:normal; float: left;}
+
+    /*====== 控制组件 ======*/
+    .ui_pop .ui_pop_hd .ui_pop_control { float: right; margin-right: 4px;}
+    .ui_pop .ui_pop_hd .ui_pop_control ul li { float: left; margin-left: 14px; *margin-left: 7px; *margin-top: 8px;}
+        
+    /*===== 弹窗内容 =====*/
+        .ui_pop_bd{padding:20px 40px;}
+
+            .ui_pop_ico{position:relative; zoom:1; padding-left:70px; height:auto!important; min-height:46px; height:46px;}
+                .ui_pop_ico .ui_pop_ico_success,
+                .ui_pop_ico .ui_pop_ico_error,
+                .ui_pop_ico .ui_pop_ico_info,
+                .ui_pop_ico .ui_pop_ico_ques{position:absolute; left:0; top:0;}
+
+                .ui_pop_ico h4{font-size:14px;}
+                .ui_pop_ico p{padding-top:5px;}
+                .ui_pop_row{padding-top:12px;}
+
+    /*===== 弹窗底部 =====*/
+        .ui_pop_ft{padding-bottom:15px; text-align:center;}
+            .ui_pop_ft a,
+            .ui_pop_ft button{margin:0 6px;}
+
+    

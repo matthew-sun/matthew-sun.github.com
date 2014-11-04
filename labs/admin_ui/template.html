@@ -1,0 +1,660 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>后台系统UI框架</title>
+    <link rel="stylesheet" href="css/ui.css">
+    <!-- 模版说明css样式 以t_打头class命名以区分UI框架 -->
+    <link rel="stylesheet" href="css/template.css">
+</head>
+<body>
+    <!-- S 模版内容 -->
+    <div class="t_container">
+        <div class="t_intro">
+            <h1>后台UI框架</h1>
+            <p>后台UI框架，作者matthewsun，如有任何疑问，欢迎邮件matthew-sun@foxmail.com咨询。</p>
+        </div>
+        <!-- S 全局样式表 -->
+        <div class="t_mod_f t_global">
+            <h2>全局样式表</h2>
+            <div class="t_mod_f_con">
+                <h3>排版</h3>
+                <p>因为框架经常需要一个大框架的背景图，所以这边提供了一个class类名：ui_layout_bg，以方便达成这个操作。</p>
+                <div class="ui_layout_bg">
+                    这里是内容区域块
+                </div>
+            </div>
+            <div class="t_mod_show">
+                <h4>html代码:</h4>
+                <div class="t_layout_bg">
+                    <textarea class="ui_txt t_mod_txt" style="height:54px;" >
+<div class="ui_layout_bg">
+    这里是内容区域块
+</div></textarea>
+                </div>
+            </div>
+        </div>
+        <!-- E 全局样式表 -->
+
+        <!-- S 表格 -->
+        <div class="t_mod_f t_table">
+            <h2>表格</h2>
+            <div class="t_mod_f_con">
+                <h3>默认表格样式</h3>
+                <p>这是框架默认的表格样式，class类名为ui_table，建议使用colgroup标签，控制表格每一列的宽度。这里我还展示了表格所经常搭配的分页组件，具体分页使用办法，可详见下面的内容也可直接F12观察，不过在嵌入表格中格外要注意的是：需要把tfoot中th的列使用colspan合并。</p>
+                <!-- S 表格 Show -->
+                <div class="ui_layout_bg">
+                    <table class="ui_table">
+                      <colgroup>
+                        <col width="76px;">
+                        <col width="186px;">
+                        <col width="106px;">
+                        <col width="91px;">
+                        <col width="148px;">
+                        <col width="237px;">
+                      </colgroup>
+                      <thead>
+                        <tr>
+                          <th>ID</th>
+                          <th>模版名称</th>
+                          <th>易迅|网购</th>
+                          <th>模板类型</th>
+                          <th>创建时间</th>
+                          <th>操作</th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <th colspan="6">
+                          <!-- S 翻页组件 -->
+                          <div class="ui_page">
+                           <select class="ui_select ui_page_select">
+                            <option value ="15">15</option>
+                            <option value ="14">14</option>
+                            <option value ="13">13</option>
+                            <option value ="12">12</option>
+                            <option value ="11">11</option>
+                            <option value ="10">10</option>
+                            <option value ="9">9</option>
+                            <option value ="8">8</option>
+                            <option value ="7">7</option>
+                            <option value ="6">6</option>
+                            <option value ="5">5</option>
+                            <option value ="4">4</option>
+                            <option value ="3">3</option>
+                            <option value ="2">2</option>
+                            <option value ="1">1</option>
+                          </select>
+                          <ul class="ui_page_control">
+                            <li>
+                              <a href="javascript:;" title="第一页" >
+                                <i class="ui_icon_step_backward"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:;" title="上一页">
+                                <i class="ui_icon_chevron_left"></i>
+                              </a>
+                            </li>
+                            <li class="ui_page_pagination">
+                              <input class="ui_input ui_input_mini" type="text" value="2"/>
+                              <i>/</i>
+                              <span>8</span>
+                            </li>
+                            <li>
+                              <a href="javascript:;" title="下一页">
+                                <i class="ui_icon_chevron_right"></i>
+                              </a>
+                            </li>
+                            <li>
+                              <a href="javascript:;" title="最后一页">
+                                <i class="ui_icon_step_forward"></i>
+                              </a>
+                            </li>
+                            <li class="ui_page_fresh">
+                              <a href="javascript:;" title="刷新">
+                                <i class="ui_icon_refresh"></i>
+                              </a>
+                            </li>
+                          </ul>
+                          <span class="ui_page_showlog">
+                            显示记录从<i>1</i>到<i>15</i>，总数<i>104</i>条
+                          </span>
+                          </div>
+                          <!-- E 翻页组件 -->
+                        </th>
+                      </tfoot>
+                      <tbody>
+                        <tr>
+                          <td>11188</td>
+                          <td>新人频道_0716</td>
+                          <td>易迅</td>
+                          <td>非固定模板</td>
+                          <td>2013-07-16 14:27:35</td>
+                          <td>
+                            <ul class="t_table_eidt">
+                              <li>
+                                <a href="javascript:;" title="编辑" >
+                                  <i class="ui_icon_edit"></i>编辑
+                                </a>
+                              </li>
+                              <li>
+                                <a href="javascript:;" title="删除" >
+                                  <i class="ui_icon_trash"></i>删除
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>11188</td>
+                          <td>新人频道_0716</td>
+                          <td>易迅</td>
+                          <td>非固定模板</td>
+                          <td>2013-07-16 14:27:35</td>
+                          <td>
+                            <ul class="t_table_eidt">
+                              <li>
+                                <a href="javascript:;" title="编辑" >
+                                  <i class="ui_icon_edit"></i>编辑
+                                </a>
+                              </li>
+                              <li>
+                                <a href="javascript:;" title="删除" >
+                                  <i class="ui_icon_trash"></i>删除
+                                </a>
+                              </li>
+                            </ul>
+                          </td>
+                        </tr>
+                      </tbody>
+                      
+                    </table>
+                </div>
+                <!-- E 表格 Show -->
+            </div>
+            <div class="t_mod_show">
+                <h4>html代码:</h4>
+                <div class="t_layout_bg">
+                    <textarea class="ui_txt t_mod_txt" style="height:164px;" >
+<table class="ui_table">
+    <colgroup>
+        <col width="??px">
+        ...
+    </colgroup>
+    <thead><th><tr><td></td>...</tr></th></thead>
+    <tfoot><th colspan="?"></th></tfoot>
+    <tbody><th><tr><td></td>...</tr></th></tbody>
+</table></textarea>
+                </div>
+            </div>
+
+            <!-- S 分页 -->
+            <div class="t_mod_f_con">
+                <h3>分页</h3>
+                <p>分页组件，适用于表格中</p>
+                <div class="ui_layout_bg">
+                    <!-- S 翻页组件 -->
+                  <div class="ui_page">
+                   <select class="ui_select ui_page_select"s>
+                    <option value ="15">15</option>
+                    <option value ="14">14</option>
+                    <option value ="13">13</option>
+                    <option value ="12">12</option>
+                    <option value ="11">11</option>
+                    <option value ="10">10</option>
+                    <option value ="9">9</option>
+                    <option value ="8">8</option>
+                    <option value ="7">7</option>
+                    <option value ="6">6</option>
+                    <option value ="5">5</option>
+                    <option value ="4">4</option>
+                    <option value ="3">3</option>
+                    <option value ="2">2</option>
+                    <option value ="1">1</option>
+                  </select>
+                  <ul class="ui_page_control">
+                    <li>
+                      <a href="javascript:;" title="第一页" >
+                        <i class="ui_icon_step_backward"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;" title="上一页">
+                        <i class="ui_icon_chevron_left"></i>
+                      </a>
+                    </li>
+                    <li class="ui_page_pagination">
+                      <input class="ui_input ui_input_mini" type="text" value="2"/>
+                      <i>/</i>
+                      <span>8</span>
+                    </li>
+                    <li>
+                      <a href="javascript:;" title="下一页">
+                        <i class="ui_icon_chevron_right"></i>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;" title="最后一页">
+                        <i class="ui_icon_step_forward"></i>
+                      </a>
+                    </li>
+                    <li class="ui_page_fresh">
+                      <a href="javascript:;" title="刷新">
+                        <i class="ui_icon_refresh"></i>
+                      </a>
+                    </li>
+                  </ul>
+                  <span class="ui_page_showlog">
+                    显示记录从<i>1</i>到<i>15</i>，总数<i>104</i>条
+                  </span>
+                  </div>
+                  <!-- E 翻页组件 -->
+                </div>
+            </div>
+            <div class="t_mod_show">
+                <h4>html代码:</h4>
+                <div class="t_layout_bg">
+                    <textarea class="ui_txt t_mod_txt" style="height:200px;" >
+<!-- S 翻页组件 -->
+  <div class="ui_page">
+   <select class="ui_select ui_page_select"s>
+    <option value ="15">15</option>...
+  </select>
+  <ul class="ui_page_control">
+    <li>
+      <a href="javascript:;" title="第一页" >
+        <i class="ui_icon_step-backward"></i>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" title="上一页">
+        <i class="ui_icon_chevron-left"></i>
+      </a>
+    </li>
+    <li class="ui_page_pagination">
+      <input class="ui_input ui_input_mini" type="text" value="2"/>
+      <i>/</i>
+      <span>8</span>
+    </li>
+    <li>
+      <a href="javascript:;" title="下一页">
+        <i class="ui_icon_chevron-right"></i>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" title="最后一页">
+        <i class="ui_icon_step-forward"></i>
+      </a>
+    </li>
+    <li class="ui_page_fresh">
+      <a href="javascript:;" title="刷新">
+        <i class="ui_icon_refresh"></i>
+      </a>
+    </li>
+  </ul>
+  <span class="ui_page_showlog">
+    显示记录从<i>1</i>到<i>15</i>，总数<i>104</i>条
+  </span>
+  </div>
+  <!-- E 翻页组件 --></textarea>
+                </div>
+            </div>
+            <!-- E 分页组件     -->
+
+            <!-- S 表格排版 -->
+            <div class="t_mod_f_con">
+                <h3>默认表格排版</h3>
+                <p>这是框架默认的表格排版样式，class类名为ui_table_grid</p>
+                <!-- S 表格排版 Show -->
+                <div class="ui_layout_bg">
+                    <table class="ui_table_grid">
+                        <tbody>
+                            <tr>
+                                <td class="ui_table_grid_tit">
+                                    <i>*</i>商品池名称:</td>
+                                <td>
+                                <input type="text" class="ui_input ui_input_xlarge"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ui_table_grid_tit">
+                                <i>*</i>所属地区:</td>
+                                <td>
+                                <select class="ui_select">
+                                  <option value ="volvo">Volvo</option>
+                                  <option value ="saab">Saab</option>
+                                  <option value="opel">Opel</option>
+                                  <option value="audi">Audi</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ui_table_grid_tit">
+                                <i>*</i>商品池描述商品池描述:</td>
+                                <td>
+                                <textarea class="ui_txt"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- E 表格排版 Show -->
+            </div>
+            <div class="t_mod_show">
+                <h4>html代码:</h4>
+                <div class="t_layout_bg">
+                    <textarea class="ui_txt t_mod_txt" style="height:220px;" >
+<table class="ui_table_grid">
+    <tbody>
+        <tr>
+            <td class="ui_table_grid_tit">
+                <!-- *着重符 -->
+                <i>*</i>
+            </td>
+            <td></td>
+        </tr>
+        ...
+    </tbody>
+</table></textarea>
+                </div>
+            </div>
+            <!-- E 表格排版 -->
+        </div>
+        <!-- E 表格 -->
+        
+        <!-- S 按钮 -->
+        <div class="t_mod_f">
+            <h2>按钮</h2>
+            <div class="t_mod_f_con">
+                <h3>按钮样式</h3>
+                <p>任何赋予.ui_btn类的页面元素都会显示按钮样式。不过，通常是用于更好的表现使用button 或 a 标签。因为此按钮是使用css3制作完成，所以还是建议用户在标准浏览器下预览。</p>
+                <!-- S 按钮表格 -->
+                <table class="ui_table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="250">
+                        <col width="600">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>按钮</th>
+                            <th>class=" "</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button class="ui_btn">保存</button>
+                            </td>
+                            <td>ui_btn</td>
+                            <td>默认版正常尺寸的按钮</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_mini">修改</button>
+                            </td>
+                            <td>ui_btn ui_btn_mini</td>
+                            <td>mini版尺寸的按钮</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_large"><i class="ui_icon_plus ui_icon_white"></i>新建模板</button>
+                            </td>
+                            <td>ui_btn ui_btn_large</td>
+                            <td>large版尺寸的按钮，常用于带有icon的宽长尺寸按钮</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_disable">保存</button>
+                            </td>
+                            <td>ui_btn ui_btn_disable</td>
+                            <td>按钮不可点击的状态</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_bg1">读取</button>
+                            </td>
+                            <td>ui_btn ui_btn_bg1</td>
+                            <td>灰色版按钮，只需额外添加类名ui_btn_bg1即可</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_bg2">读取</button>
+                            </td>
+                            <td>ui_btn ui_btn_bg2</td>
+                            <td>红色版按钮，只需额外添加类名ui_btn_bg2即可</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button class="ui_btn ui_btn_bg3">读取</button>
+                            </td>
+                            <td>ui_btn ui_btn_bg3</td>
+                            <td>黄色版按钮，只需额外添加类名ui_btn_bg3即可</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- E 按钮表格 -->
+                </div>
+            </div>
+        <!-- E 按钮 -->
+        
+        <!-- S input组件框 -->
+        <div class="t_mod_f">
+            <h2>input组件框</h2>
+            <div class="t_mod_f_con">
+                <h3>input组件框</h3>
+                <p>默认的一些input组件框，及些许尺寸大小的设定</p>
+                <!-- S input -->
+                <table class="ui_table">
+                    <colgroup>
+                        <col width="450">
+                        <col width="150">
+                        <col width="400">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>input</th>
+                            <th>class=" "</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <input type="text" class="ui_input" />
+                            </td>
+                            <td>ui_input</td>
+                            <td>默认版input，h:24px;w:132px;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                 <select class="ui_select">
+                                    <option value ="volvo">Volvo</option>
+                                    <option value ="saab">Saab</option>
+                                    <option value="opel">Opel</option>
+                                    <option value="audi">Audi</option>
+                                </select>
+                            </td>
+                            <td>ui_select</td>
+                            <td>默认版select，h:24px;w:132px;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="ui_input ui_input_mini" />
+                            </td>
+                            <td>ui_input ui_input_mini</td>
+                            <td>mini版input，h:24px;w:112px;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="ui_input ui_input_large" />
+                            </td>
+                            <td>ui_input ui_input_large</td>
+                            <td>长版input，h:24px;w:178px;</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" class="ui_input ui_input_xlarge" />
+                            </td>
+                            <td>ui_input ui_input_xlarge</td>
+                            <td>超长版input，h:24px;w:410px;</td>
+                        </tr>                 
+                        <tr>
+                            <td>
+                                <textarea class="ui_txt" ></textarea>
+                            </td>
+                            <td>ui_txt</td>
+                            <td>默认版textarea框，h:72px;w:408px;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- E input -->
+            </div>
+        </div>
+        <!-- E input组件框 -->
+        
+        <!-- S 弹出浮层组件 -->
+        <div class="t_mod_f">
+            <h2>弹出浮层组件</h2>
+            <div class="t_mod_f_con">
+                <h3>弹出浮层组件</h3>
+                <p>后台页面经常需要一些弹出浮层组件使用，这边我提供了一些弹出层组件的样式，以方便构建者使用。</p>
+                <div class="ui_layout_bg">
+                    <a href="example/ui_pop.html" style="color:#c40a3f;" title="可以点击此链接，进入弹出浮层组件的展示页面！" target="_blank">可以点击此链接，进入弹出浮层组件的展示页面！</a>
+                </div>
+            </div>
+        </div>
+        <!-- E 弹出浮层组件 -->
+
+        <!-- S 气泡 -->
+        <div class="t_mod_f">
+            <h2>气泡组件</h2>
+            <div class="t_mod_f_con">
+                <h3>气泡</h3>
+                <p>后台页面经常需要一些气泡使用，比如点击字，详细信息以气泡的形式浮现。这边我提供了一些气泡的样式，以方便构建者使用。</p>
+                <div class="ui_layout_bg">
+                    <a href="example/ui_hint.html" style="color:#c40a3f;" title="可以点击此链接，进入气泡组件的展示页面！" target="_blank">可以点击此链接，进入气泡组件的展示页面！</a>
+                </div>
+            </div>
+        </div>
+        <!-- E 气泡 -->
+
+        <!-- S icon图标 -->
+        <div class="t_mod_f">
+            <h2>icon图标</h2>
+            <div class="t_mod_f_con">
+                <h3>icon图标</h3>
+                <p>为了方便构建者使用图标，我采用了bootstrap的图标，只需要在bootstrap提供的样式名前加上ui_前缀即可使用，但是这里必须要注意的是bootstrap的单词中间用的是-连接，而我们这里需要把-改为_。比如.icon-ok，需要改成.ui_icon_ok。除了bootstrap的黑白图标外，这边我还另外提供了一套蓝色的图标，方便构建者使用。使用蓝色图标的方式和白色一样，只需要在原有类名上加上.ui_icon_blue</p>
+                <div class="ui_layout_bg">
+                    <a href="http://www.bootcss.com/base-css.html#icons" style="color:#c40a3f;" title="可以点击此链接，直接查看bootstrap的图标样式！" target="_blank">可以点击此链接，直接查看bootstrap的图标样式</a>
+                </div>
+            </div>
+            <div class="t_mod_show">
+                <h4>后台中经常使用的图标:</h4>
+                <div class="t_layout_bg">
+                    <!-- S icon表格 -->
+                  <table class="ui_table">
+                    <colgroup>
+                        <col width="150">
+                        <col width="650">
+                        <col width="200">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>图标</th>
+                            <th>class=" "</th>
+                            <th>描述</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_plus"></i>
+                                <i class="ui_icon_plus ui_icon_white"></i>
+                                <i class="ui_icon_plus ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_plus | ui_icon_plus ui_icon_white | ui_icon_plus ui_icon_blue</td>
+                            <td>三色版加号图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_edit"></i>
+                                <i class="ui_icon_edit ui_icon_white"></i>
+                                <i class="ui_icon_edit ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_edit | ui_icon_edit ui_icon_white | ui_icon_edit ui_icon_blue</td>
+                            <td>三色版编辑图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_trash"></i>
+                                <i class="ui_icon_trash ui_icon_white"></i>
+                                <i class="ui_icon_trash ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_trash | ui_icon_trash ui_icon_white | ui_icon_trash ui_icon_blue</td>
+                            <td>三色版删除图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_share"></i>
+                                <i class="ui_icon_share ui_icon_white"></i>
+                                <i class="ui_icon_share ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_share | ui_icon_share ui_icon_white | ui_icon_share ui_icon_blue</td>
+                            <td>三色版导出图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_remove"></i>
+                                <i class="ui_icon_remove ui_icon_white"></i>
+                                <i class="ui_icon_remove ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_remove | ui_icon_remove ui_icon_white | ui_icon_remove ui_icon_blue</td>
+                            <td>三色版关闭图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_refresh"></i>
+                                <i class="ui_icon_refresh ui_icon_white"></i>
+                                <i class="ui_icon_refresh ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_refresh | ui_icon_refresh ui_icon_white | ui_icon_refresh ui_icon_blue</td>
+                            <td>三色版刷新图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_step_backward"></i>
+                                <i class="ui_icon_chevron_left"></i>
+                                <i class="ui_icon_chevron_right"></i>
+                                <i class="ui_icon_step_forward"></i>
+                            </td>
+                            <td>ui_icon_step_backward | ui_icon_chevron_left | ui_icon_chevron_right | ui_icon_step_forward</td>
+                            <td>左右翻页图标</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <i class="ui_icon_plus_sign"></i>
+                                <i class="ui_icon_plus_sign ui_icon_white"></i>
+                                <i class="ui_icon_plus_sign ui_icon_blue"></i>
+                            </td>
+                            <td>ui_icon_plus_sign | ui_icon_plus_sign ui_icon_white | ui_icon_plus_sign ui_icon_blue</td>
+                            <td>三色版新增图标</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <!-- E icon表格 -->
+                </div>
+            </div>
+        </div>
+        <!-- E icon图标 -->
+    </div>
+    <!-- E 模版内容 -->
+    <!-- S 底部信息 -->
+    <div class="t_foot">
+        <p>admin_ui框架&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@matthewsun&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;527551750@qq.com</p>
+    </div>
+    <!-- E 底部信息 -->
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+   <meta charset="UTF-8">
+   <title></title>
+   <link rel="stylesheet" href="../css/ui.css">
+   <style type="text/css">
+      /*仅为测试css*/
+      body { width: 1000px; margin: 0 auto; margin-top: 100px;}
+      .p_test { margin-top: 24px;}
+   </style>
+</head>
+<body>
+  <h1>&nbsp;翻页组件:</h1>
+  <!-- S 翻页组件 -->
+  <div class="ui_page">
+   <select class="ui_select ui_page_select"s>
+    <option value ="15">15</option>
+    <option value ="14">14</option>
+    <option value ="13">13</option>
+    <option value ="12">12</option>
+    <option value ="11">11</option>
+    <option value ="10">10</option>
+    <option value ="9">9</option>
+    <option value ="8">8</option>
+    <option value ="7">7</option>
+    <option value ="6">6</option>
+    <option value ="5">5</option>
+    <option value ="4">4</option>
+    <option value ="3">3</option>
+    <option value ="2">2</option>
+    <option value ="1">1</option>
+  </select>
+  <ul class="ui_page_control">
+    <li>
+      <a href="javascript:;" title="第一页" >
+        <i class="ui_icon_step_backward"></i>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" title="上一页">
+        <i class="ui_icon_chevron_left"></i>
+      </a>
+    </li>
+    <li class="ui_page_pagination">
+      <input class="ui_input ui_input_mini" type="text" value="2" />
+      <i>/</i>
+      <span>8</span>
+    </li>
+    <li>
+      <a href="javascript:;" title="下一页">
+        <i class="ui_icon_chevron_right"></i>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" title="最后一页">
+        <i class="ui_icon_step_forward"></i>
+      </a>
+    </li>
+    <li class="ui_page_fresh">
+      <a href="javascript:;" title="刷新">
+        <i class="ui_icon_refresh"></i>
+      </a>
+    </li>
+  </ul>
+  <span class="ui_page_showlog">
+    显示记录从<i>1</i>到<i>15</i>，总数<i>104</i>条
+  </span>
+  </div>
+  <!-- E 翻页组件 -->
+</body>
+</html>
