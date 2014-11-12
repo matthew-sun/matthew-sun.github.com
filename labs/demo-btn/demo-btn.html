@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>btn</title>
+    <style>
+    a {text-decoration: none;font-family: Arial, "Microsoft Yahei", "Heiti SC",  sans-serif;}
+    .btn {
+        display: inline-block;
+        width: 200px;
+        height: 60px;
+        background: #F98183;
+        font-size: 24px;
+        line-height: 60px;
+        text-align: center;
+        border-radius: 30px;
+        color: white;
+        text-shadow: 0 1px 0 #F8474F;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        margin-top: 50px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -mz-user-select: none;
+        user-select: none;
+    }
+
+    .btn:active {
+        background: #FF6161;
+        -webkit-transform: scale(0.95);
+        transform: scale(0.95);
+    }
+
+    .btn:before {
+        content: ' ';
+        display: block;
+        background: rgba(255, 255, 255, .2);
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 30px;
+        transform: scale(0, 1);
+        -webkit-transform: scale(0, 1);
+        transition: transform 0.3s ease;
+        -webkit-transition: -webkit-transform 0.3s ease;
+    }
+
+    .btn:hover:before {
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+    }
+    </style>
+</head>
+<body>
+   <a href="javascript:;" class="btn">
+       马上开启
+   </a> 
+</body>
+</html>
