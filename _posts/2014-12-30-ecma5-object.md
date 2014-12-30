@@ -144,5 +144,48 @@ descriptor：必需。属性的描述符。它可以针对数据属性或访问�
 		// query
 
 请注意此例子页面中必须包含id为div的元素。
+
+##object.defineProperties(object, descriptors)
+###描述：将一个或多个属性添加到对象，并/或修改现有属性的特性。
+###参数
+object: 必需。对其添加或修改属性的对象。这可以是本机 JavaScript 对象（即用户定义的对象或内置对象）或 DOM 对象。<br>
+descriptors：必需。包含一个或多个描述符对象的 JavaScript 对象。 每个描述符对象描述一个数据属性或访问器属性。<br>
+###示例
+####添加属性
+
+	var obj = {}
+	
+	Object.defineProperties(obj, {
+		newData: {
+			value: 10,
+			writable: true
+		},
+		newAccessor: {
+			get: function() {
+                console.log('get')
+				return this.newAccessorValue
+			},
+			set: function(x) {
+                console.log('set')
+				this.newAccessorValue = x
+			},
+			enumerable: true
+		}
+	})
+	
+	obj.newData = 10
+	console.log( obj.newData )
+	
+	// output
+	// set
+	// get
+	// 10
+####修改属性
+	
+	Object.defineProperties(obj, {
+		newData: {writable: false},
+		newAccessor: {enumerable: false}
+	})
+
 ##如果有任何问题都可以在下方给予我留言~
 
