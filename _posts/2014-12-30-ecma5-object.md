@@ -145,7 +145,7 @@ descriptor：必需。属性的描述符。它可以针对数据属性或访问�
 
 请注意此例子页面中必须包含id为div的元素。
 
-##object.defineProperties(object, descriptors)
+##Object.defineProperties(object, descriptors)
 ###描述：将一个或多个属性添加到对象，并/或修改现有属性的特性。
 ###参数
 object: 必需。对其添加或修改属性的对象。这可以是本机 JavaScript 对象（即用户定义的对象或内置对象）或 DOM 对象。<br>
