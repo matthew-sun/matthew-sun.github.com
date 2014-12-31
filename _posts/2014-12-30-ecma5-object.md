@@ -187,5 +187,214 @@ descriptors：必需。包含一个或多个描述符对象的 JavaScript 对象
 		newAccessor: {enumerable: false}
 	})
 
+##Object.getPrototypeOf(object)
+###描述：返回对象的原型
+###参数：
+object：必须。引用原型的对象。
+###示例：
+
+	function Person(name, age) {
+	  this.name = name
+	  this.age = age
+	}
+	var me = new Person('matthew', 22)
+	var proto = Object.getPrototypeOf(me)
+	
+	proto.sex = 'male'
+	console.log(me.sex)
+	console.log(Person.prototype.sex)
+	console.log(proto === Person.prototype)
+	console.log(proto.isPrototypeOf(me))
+
+	// output
+	// male
+	// male
+	// true
+	// true
+	
+####验证数据类型：
+
+	var arr = []
+	var result = (Object.getPrototypeOf(arr) === Array.prototype)
+	console.log(result)
+	// true
+
+####扩展，过去验证数据类型：
+
+	var arr = []
+	var result = (Object.prototype.toString.call(arr) === '[object Array]')
+	console.log(result)
+	// true
+
+##Object.keys(object)
+###描述：返回对象的可枚举属性和方法的名称。
+###参数
+object：必需。包含属性和方法的对象。这可以是您创建的对象或现有文档对象模型 (DOM) 对象。
+###示例
+	
+	var o = {
+		name: 'matthew',
+		age: 22
+	}
+
+	console.log(Object.keys(o))
+	// ['name', 'age']
+
+####回顾一下知识，过去是如何获取键值？
+	
+	function keys(obj) {
+        var keys = [];
+        for (var key in obj) {
+            if (obj.hasOwnProperty(key)) keys.push(key)
+        }
+        return keys;
+    }
+
+##Object.seal(object)
+###描述：阻止修改现有属性的特性，并阻止添加新属性。
+###参数：
+object：必需。在其上锁定特性的对象。
+###备注：
+Object.seal 函数执行以下两项操作：
+
++ 使对象不可扩展，这样便无法向其添加新属性。
++ 为对象的所有属性将 configurable 特性设置为 false。
+
+###示例：
+	
+	var obj = { pasta: "spaghetti", length: 10 };	
+	Object.defineProperty(obj, 't', {
+	  value: 't',
+	  writable: true
+	})
+	Object.seal(obj);
+	console.log(Object.isSealed(obj));
+	
+	obj.newProp = 50;
+	console.log(obj.newProp);
+	
+	delete obj.length;
+	console.log(obj.length);
+	
+	obj.t = 'not t'
+	console.log(obj.t)
+	
+	// Output:
+	// true
+	// undefined
+	// 10
+	// not t
+
+##Object.freeze(object)
+###描述：阻止修改现有属性的特性和值，并阻止添加新属性。
+###参数：
+object：必需。在其上锁定特性的对象。
+###备注
+Object.freeze 函数执行下面的操作：
+
++ 使对象不可扩展，这样便无法向其添加新属性。
++ 为对象的所有属性将 configurable 特性设置为 false。在 configurable 为 false 时，无法更改属性的特性且无法删除属性。
++ 为对象的所有数据属性将 writable 特性设置为 false。当 writable 为 false 时，无法更改数据属性值。
+
+###示例：
+	
+	var obj = { pasta: "spaghetti", length: 10 };
+	
+	Object.defineProperty(obj, 't', {
+	  value: 't',
+	  writable: true
+	})
+	Object.freeze(obj);
+	// console.log(Object.isSealed(obj));
+	
+	obj.newProp = 50;
+	console.log(obj.newProp);
+	
+	delete obj.length;
+	console.log(obj.length);
+	
+	obj.t = 'not t'
+	console.log(obj.t)
+	
+	// Output:
+	// undefined
+	// 10
+	// t
+
+##Object.preventExtensions(object)
+###描述：阻止向对象添加新属性。
+###参数：
+object：必需。要成为不可扩展的对象的对象。
+###示例：
+
+	var obj = { pasta: "spaghetti", length: 10 };
+	
+	Object.preventExtensions(obj);
+	console.log(Object.isExtensible(obj));
+	
+	obj.newProp = 50;
+	document.write(obj.newProp);
+	
+	// Output:
+	// false
+	// undefined
+
+##Object.isSealed(object)
+###描述：如果无法在对象中修改现有属性的特性，且无法向对象添加新属性，则返回 true。
+
+##Object.isFrozen(object)
+###描述：如果无法在对象中修改现有属性的特性和值，且无法向对象添加新属性，则返回 true。
+
+##Object.isExtensible(object)
+###描述：返回一个值，该值指示是否可向对象添加新属性。
+
+##Object.getOwnPropertyDescriptor(object, propertyname)
+###描述：获取指定对象自己的属性描述符。 自己的属性描述符是直接在对象上定义的描述符，而不是从对象的原型继承的描述符。
+###参数：
+object：必需。包含该属性的对象。
+propertyname：必需。属性的名称。
+###示例：
+
+	var obj = {};
+	obj.newDataProperty = "abc";
+	
+	var descriptor = Object.getOwnPropertyDescriptor(obj, "newDataProperty");
+	console.log(descriptor)
+	// output
+	//[object Object] {
+  	//	configurable: true,
+  	//	enumerable: true,
+  	//	value: "abc",
+  	//	writable: true
+	}
+
+##Object.getOwnPropertyNames(object)
+###描述：返回对象自己的属性的名称。一个对象的自己的属性是指直接对该对象定义的属性，而不是从该对象的原型继承的属性。对象的属性包括字段（对象）和函数。
+###参数
+object：必需。包含自己的属性的对象。
+###返回值：
+一个数组，其中包含对象自己的属性的名称。
+###示例：
+
+	function Pasta(grain, width, shape) {
+	    // Define properties.
+	    this.grain = grain;
+	    this.width = width;
+	    this.shape = shape;
+	    this.toString = function () {
+	        return (this.grain + ", " + this.width + ", " + this.shape);
+	    }
+	}
+	
+	var spaghetti = new Pasta("wheat", 0.2, "circle");
+	
+	var arr = Object.getOwnPropertyNames(spaghetti);
+	document.write (arr);
+	
+	// Output:
+	// grain,width,shape,toString
+
+##关于ECMA5，object的介绍就到这么多了，下面会陆续写关于Date,Json,Function,String,Array等的介绍，还请大家感兴趣的多多关注。
+
 ##如果有任何问题都可以在下方给予我留言~
 
