@@ -131,17 +131,17 @@ descriptor：必需。属性的描述符。它可以针对数据属性或访问�
 ####修改DOM元素上的属性
 
 	
-        var descriptor = Object.getOwnPropertyDescriptor(Element.prototype, "querySelector");
- 
-        descriptor.value = "query";
-        descriptor.writable = false;
-        Object.defineProperty(Element.prototype, "querySelector", descriptor);
+    var descriptor = Object.getOwnPropertyDescriptor(Element.prototype, "querySelector");
 
-        var elem = document.getElementById("div");
+    descriptor.value = "query";
+    descriptor.writable = false;
+    Object.defineProperty(Element.prototype, "querySelector", descriptor);
 
-        elem.querySelector = "anotherQuery";
-        console.log(elem.querySelector);
-		// query
+    var elem = document.getElementById("div");
+
+    elem.querySelector = "anotherQuery";
+    console.log(elem.querySelector);
+	// query
 
 请注意此例子页面中必须包含id为div的元素。
 
