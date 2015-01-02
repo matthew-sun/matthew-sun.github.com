@@ -5,13 +5,13 @@ tags: [ Standard , css ,网页重构  ]
 category: Frontend
 description: 规范是前端工程师评判代码的一杆重要标尺，本文总结了一套的css规范，供各位看客取用。
 ---
-[word-rule]: /images/word-rule.png
-[status-rule]: /images/status-rule.png
+[word-rule]: http://matthew-sun.github.io/images/word-rule.png
+[status-rule]: http://matthew-sun.github.io/images/status-rule.png
 
-#css代码规范：
-###模块和组件
+# css代码规范：
+### 模块和组件
 我们将具有一定公用性的DOM结构抽取成模块。包含全局模块（全站公用，比如翻页、按钮等），局部模块(部分页面用到)。
-#####常规结构
+##### 常规结构
 1) 最外层容器<br>
 2) 内部容器，方便设置统一的padding值，也方便后期扩展样式。<br>
 3) 模块头部<br>
@@ -30,13 +30,13 @@ description: 规范是前端工程师评判代码的一杆重要标尺，本文�
 如果需要对该模块扩展个性化样式，可在该模块最外层新增个性化的className，针对新的className来扩展表现。
 			
 	比如：<div class="mod_list hotsale_list">
-###命名规则
-#####为什么命名很重要？
+### 命名规则
+##### 为什么命名很重要？
 1) 快速高效开发（命名费时）；<br>
 2) 安全（解耦无依赖）；<br>
 3) 方便维护（一目了然的命名，无耦合的模块化规范）；<br>
 4) 方便复用（高度抽象、细粒度、可拼装的组件）<br>
-#####模块命名
+##### 模块命名
 + 公共模块可用mod作为前缀。比如：
 
 		.mod_btn
@@ -45,7 +45,7 @@ description: 规范是前端工程师评判代码的一杆重要标尺，本文�
 		.sy_mod_btn
 
 PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行差异化表现。
-#####普通命名
+##### 普通命名
 1) 大部分情况下使用长命名（继承父级的className），安全起见，外层布局模块必须使用长命名。比如：
 
 		.hotlist > .hotlist_hd > .hotlist_hd_extra
@@ -54,18 +54,18 @@ PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行
 		.hotlist > .hotlist_hd > .hotlist_extra
 3) 内部元素根据情况(比如可判定该结构中不会再嵌套其他元素时)可使用短单词命名。<br>
   比如：tit、more。
-#####常用命名词汇<br>
+##### 常用命名词汇<br>
 ![word standard][word-rule]<br>
 ![status standard][status-rule]
 
-###编码规范
-#####书写规范
+### 编码规范
+##### 书写规范
 1. 选择符(selector)换行书写；属性(properties)和属性的取值(value)横排书写，不换行。
 2. 背景图URL引用时 属性值统一不加引号。
 3. margin，padding，border等属性可以简写的尽量简写，后续修改维护时，只需要改动单边属性值即可。
 4. CSS HACK使用标准形式放置于紧跟相同属性后面，并加以注释。
 
-#####书写顺序
+##### 书写顺序
 1. 组合实现的功能放一起 如：截断width:100%; overflow:hidden;white-space:nowrap;text-overflow:ellipsis
 2. 长内容的放最后 如：图片：background:-ms-linear-gradient(top,#2372cf 0,#3064af 100%);
 3. 多个选择符：如果是选择符组，则这些选择符(selector)各占一行
@@ -74,7 +74,7 @@ PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行
 盒模型：width,max-width,min-width,height,max-height,min-height,line-height,overflow,margin,padding,border<br>
 表现：color,font家族,text家族,vertical-align,letter-spacing,white-space,word-spacing,content,list-style,filter,background
 
-###注释规范
+### 注释规范
 1) 普通注释：注释文字前后各加一个空格 
 
 		/* 注释 */
@@ -90,7 +90,7 @@ PS: 对模块/组件重置样式时，需要自己加入新的样式名来进行
 		.tuihuo .hd {font:700 12px/21px Arial;}
 		.tuihuo .bd {font:700 12px/21px Arial;}
 
-###统一Hack方法
+### 统一Hack方法
 如下代码所示：
 	
 	统一使用“*”和“_”分别对IE7和6进行Hack。

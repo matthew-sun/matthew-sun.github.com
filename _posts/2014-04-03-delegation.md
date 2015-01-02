@@ -5,8 +5,8 @@ tags: [ Javascript ]
 category: Frontend
 description: 对“事件处理程序过多”问题的解决访问就是事件委托。事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。
 ---
-[Demo]: /labs/note/index.html
-[hot_players]: /images/hot_players.png
+[Demo]: http://matthew-sun.github.io/labs/note/index.html
+[hot_players]: http://matthew-sun.github.io/images/hot_players.png
 
 >对“事件处理程序过多”问题的解决访问就是事件委托。事件委托利用了事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。<br>
 
