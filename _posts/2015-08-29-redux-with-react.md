@@ -1,28 +1,28 @@
 ## 使用Redux管理你的React应用
 
-> React是最好的前端库，因为其发源于世界上最好的后端语言框架。  —段子
+> React是最好的前端库，因为其发源于世界上最好的后端语言框架。  ---信仰
 > 
 > 4.0 will likely be the last major release. Use Redux instead. It's really great.  —Flummox框架作者  acdliteAndrew Clark
 
 #### 为什么使用React还需要使用别的框架来搭配？
 
-React的核心是使用组件定义界面的表现，也就是说他仅仅只是一个View层的前端库，那么使用React的时候我们通常还需要一套机制去管理组件与组件之间，组件与数据模型之间的通信，已达到程序之间相互解耦的目的。
+React的核心是使用组件定义界面的表现，是一个View层的前端库，那么在使用React的时候我们通常还需要一套机制去管理组件与组件之间，组件与数据模型之间的通信，已达到程序之间相互解耦的目的。
 
 #### 为什么使用Redux？
 
-Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[实现](https://github.com/facebook/flux)。可是当我打开[FLUX](https://github.com/facebook/flux)的文档时候，wtf，怎么会有这么繁琐的实现，如果我用这套模型来写代码的话我想我会crazy。幸好，社区中和我有类似想法的不在少数，github上也涌现了一批关于实现FLUX的框架，比较出名的有[Redux](https://github.com/rackt/redux),[Reflux](https://github.com/reflux/refluxjs),[Flummox](https://github.com/acdlite/flummox)。什么？我好像听到你说你需要一款简单好用，逼格极高，为社区所认可的框架？Redux就是！
+Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[实现](https://github.com/facebook/flux)来管理React应用。可是当我打开[FLUX](https://github.com/facebook/flux)的文档时候，wtf，繁琐的实现，又臭又长的文档，实在难以让我有使用它的欲望。幸好，社区中和我有类似想法的不在少数，github上也涌现了一批关于实现FLUX的框架，比较出名的有[Redux](https://github.com/rackt/redux),[Reflux](https://github.com/reflux/refluxjs),[Flummox](https://github.com/acdlite/flummox)。
 
-Redux的简单和有趣的编程体验是最吸引我的地方。 
+其中Redux的简单和有趣的编程体验是最吸引我的地方。 
 
-- 简单。和其它的FLUX实现不一样，Redux只有唯一的state树，不管项目变的有多复杂，我也仅仅只需要管理一个State树。听起来像是一个joke，一个state树够用？这个state树该有多大？别着急，redux自有办法，后面再讲Store的时候会讲到。
+- 简单。和其它的FLUX实现不一样，Redux只有唯一的state树，不管项目变的有多复杂，我也仅仅只需要管理一个State树。可能你会有疑问，一个state树就够用了？这个state树该有多大？别着急，Redux中的Reducer机制可以解决这个问题。
   
-- 有趣。你在和我开玩笑吗？学新东西不头疼就算不错了，还有趣？等等，你下面放的图是什么鬼，右边那个调试工具是啥？整个应用的action和state都这么被轻松的管理了？行为还能被保存，回滚，重置？修改了代码，页面不刷新也能产生变化？别开玩笑了，不行，世界那么大，让我去试试！
+- 有趣。忙于迭代项目的你，体会编程带来的趣味是有多久没有体会到了？瞧下面这张图，右边那个调试工具是啥？整个应用的action和state都这么被轻松的管理了？行为还能被保存，删除，回滚，重置？修改了代码，页面不刷新也能产生变化？别开玩笑了，不行，世界那么大，让我去试试！
   
   ![Redux DevTools](https://camo.githubusercontent.com/a0d66cf145fe35cbe5fb341494b04f277d5d85dd/687474703a2f2f692e696d6775722e636f6d2f4a34476557304d2e676966)
   
   注：Redux开发调试工具：[redux-devtools](https://github.com/gaearon/redux-devtools)
   
-  ​       React应用无刷新保存工具：[hot-loader](http://gaearon.github.io/react-hot-loader)
+  ​        React应用无刷新保存工具：[hot-loader](http://gaearon.github.io/react-hot-loader)
   
   ##### 不明真相的群众，可能这里需要我来安利一下Flux数据流的思想，看图：
   
@@ -32,19 +32,23 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   ╚═════════╝       ╚════════╝       ╚═════════════════╝
        ^                                      │
        └──────────────────────────────────────┘
+  
+  注意：图片仅仅是FLUX思想，而不是Facebook的实现。
   ```
   
-  View层不能直接改变state，而是依赖Actions派发指令来告知Store修改状态，Store接收Actions指令后发生改变，View层同时跟着Store的变化而变化。举个例子：A组件如何使B组件发生变化？A组件先执行一个Action，告知绑定B组件的Store发生变化，绑定B组件的Store接收指令后改变，B组件的视图也就自然的发生了改变。假如C，D，E，F组件绑定了和B组件相同的Store，那么C，D，E，F也会跟着变化。
+  大致的过程是这样的，View层不能直接对state进行操作，而需要依赖Actions派发指令来告知Store修改状态，Store接收Actions指令后发生相应的改变，View层同时跟着Store的变化而变化。
+  
+  举个例子：A组件要使B组件发生变化。首先，A组件需要执行一个Action，告知绑定B组件的Store发生变化，Store接收到派发的指令后改变，那相应的B组件的视图也就发生了改变。假如C，D，E，F组件绑定了和B组件相同的Store，那么C，D，E，F也会跟着变化。
   
   ### 使用React和Redux开发一个小程序
   
   为了更好的描述怎么样使用Redux管理React应用，我做了一个Manage Items的小例子。你可以在这里找到全部的源代码：https://github.com/matthew-sun/redux-example。
   
-  ![Manage Items](http://matthew-sun.github.io/images/manage-items.png)
+  ![Manage Items](http://matthew-sun.github.io/images/manage-items.gif)
   
   ##### 快速查看
   
-   `1.git clone git@github.com:matthew-sun/redux-example.git`
+  `1.git clone git@github.com:matthew-sun/redux-example.git`
   
   `2.npm install && npm start`
   
@@ -52,7 +56,7 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   
   #### Index.js
   
-  在入口文件中，我们需要App.js和redux建立起联系。这里用到了react-redux中的Provider，这是一个把Store和视图绑定在一起的组件，我们前面所说的唯一State树就是这么个东西。这里很轻松的就把Store和App进行了绑定，当Store发生改变App就可以收到通知。{() => <App />}仅仅需要暂时记住这个鬼，因为他将会在React 0.14版本得到简化。
+  在入口文件中，我们需要把App和redux建立起联系。Provider是react-redux提供的组件，它的作用是把store和视图绑定在了一起，这里的Store就是那个唯一的State树。当Store发生改变的时候，整个App就可以作出对应的变化。{() => <App />}是声明了一个返回<App />的函数传进Provider的props.children里，这个方法将会在React的 0.14版本得到简化。
   
   ``` javascript
   /* app/index.js */
@@ -98,7 +102,7 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   
   #### Actions
   
-  Action向store派发指令，store将会根据不同的action.type来执行不同的方法。这里的addItem函数我使用了一点小技巧，action在view层用bindActionCreators函数绑定的时候会被赋予一个参数dispatch，使用这个我们可以来向store发送异步的指令。比如说，可以在action中放入向服务端的请求，也强烈推荐这样去做。
+  Action向store派发指令，store将会根据不同的action.type来执行不同的方法。addItem函数的异步操作我使用了一点小技巧，使用[redux-thunk](https://github.com/gaearon/redux-thunk)中间件去帮助延迟action中的dispatch，dispatch是在View层用bindActionCreators绑定的。使用这个dispatch我们可以向store发送异步的指令。比如说，可以在action中放入向服务端的请求(ajax)，也强烈推荐这样去做。
   
   ``` javascript
   /* app/actions/index.js */
@@ -132,12 +136,13 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   
   #### Reducers
   
-  之前讲到过Redux有且只有一个State状态树，为了避免这个状态树的复杂，Redux通过 Reducers来负责管理整个应用的State树。
+  Redux有且只有一个State状态树，为了避免这个状态树变得越来越复杂，Redux通过 Reducers来负责管理整个应用的State树，而Reducers可以被分成一个Reduce组成。
   
-  Reduce这个词好像在哪里听过，对了，是在ES5的Array规范中有提到过这个方法。简单快速的用代码样例来回顾一下，如果想深入了解可以看我以前写的一篇文章[ECMA5系列介绍---Array](http://www.fehouse.com/index.php/archives/21/)。
+  Reduce这个词好像在哪里听过，没错，这是Javascript Array的方法，只是不太常用。简单快速的用代码样例来回顾一下，如果想深入了解可以看我以前写的一篇文章[ECMA5系列介绍---Array](http://www.fehouse.com/index.php/archives/21/)。
   
   ``` javascript
   /* Array.prototype.reduce */
+  
   var arr = [1,2,3,4];
   var initialValue = 5;
   var result = arr.reduce(function(previousValue, currentValue) {
@@ -149,7 +154,7 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   // 整个函数执行的过程大致是这样 ((((5+1)+2)+3)+4)
   ```
   
-  回到Redux中来看，整个的状态就相当于从[初始状态]merge一个[action]得到一个新的状态，随着action的不断传入，不断的得到新的状态的过程，(previousState, action) => newState。注意：任何情况下都不要改变previousState，因为这样可以View层在比较State的改变时只需要简单比较即可，而避免了深度循环比较。数据结构我们可以用[immutable-js](https://github.com/facebook/immutable-js/)，这样我们在View层只需要[react-immutable-render-mixin](https://github.com/jurassix/react-immutable-render-mixin)插件就可以轻松的跳过更新那些state没有发生改变的组件子树。
+  回到Redux中来看，整个的状态就相当于从[初始状态]merge一个[action.state]从而得到一个新的状态，随着action的不断传入，不断的得到新的状态的过程。(previousState, action) => newState，注意：任何情况下都不要改变previousState，因为这样View层在比较State的改变时只需要简单比较即可，而避免了深度循环比较。Reducer的数据结构我们可以用[immutable-js](https://github.com/facebook/immutable-js/)，这样我们在View层只需要[react-immutable-render-mixin](https://github.com/jurassix/react-immutable-render-mixin)插件就可以轻松的跳过更新那些state没有发生改变的组件子树。
   
   ``` javascript
   /* app/reducers/items.js */
@@ -175,7 +180,7 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   
   ##### 连接reducers
   
-  仅仅靠一个reducer来管理巨大的store明显是不太够的，Redux提供了combineReducers函数帮助我们把reducer组合在一起，这样我们就可以把Reducers拆分成一个个小的Reducer来帮助我们管理Store了。
+  Redux提供的combineReducers函数可以帮助我们把reducer组合在一起，这样我们就可以把Reducers拆分成一个个小的Reducer来管理Store了。
   
   ``` javascript
   /* app/reducers/index.js */
@@ -192,12 +197,138 @@ Redux的简单和有趣的编程体验是最吸引我的地方。
   export default rootReducer;
   ```
   
+  #### Middleware
+  
+  占坑。
+  
+  ``` javascript
+  /* app/configureStore.js */
+  
+  import { compose, createStore, applyMiddleware } from 'redux';
+  import thunk from 'redux-thunk';
+  import rootReducer from './reducers';
+  
+  var buildStore = compose(applyMiddleware(thunk), createStore)
+  export default function configureStore(initialState) {
+      return buildStore(rootReducer, initialState);
+  }
+  ```
+  
   #### UI
   
-  ​
+  智能组件和木偶组件，因为本文主要是介绍Redux，感兴趣的同学可以看一下这篇博文[Smart and Dumb Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)。本项目中在结构上会把智能组件放在containers中，木偶组件放于components中。
   
-  ​
+  ##### containers
   
-  ​
+  智能组件，会通过react-redux函数提供的connect函数把state和actions转换为旗下木偶组件所需要的props。
+  
+  ``` javascript
+  /* app/containers/App.js */
+  
+  import React from 'react';
+  import SearchBar from '../components/searchBar';
+  import Content from '../components/content';
+  import Footer from '../components/footer';
+  import { connect } from 'react-redux';
+  import ImmutableRenderMixin from 'react-immutable-render-mixin';
+  import * as ItemsActions from '../actions';
+  import { bindActionCreators } from 'redux';
+  
+  let App = React.createClass({
+      mixins: [ImmutableRenderMixin],
+      propTypes: {
+          items: React.PropTypes.object,
+          filter: React.PropTypes.string
+      },
+      render() {
+          let styles = {
+              width: '200px',
+              margin: '30px auto 0'
+          }
+          const actions = this.props.actions;
+          return (
+              <div style={styles}>
+                  <h2>Manage Items</h2>
+                  <SearchBar filterItem={actions.filterItem}/>
+                  <Content items={this.props.items} filter={this.props.filter} deleteItem={actions.deleteItem}/>
+                  <Footer addItem={actions.addItem} deleteAll={actions.deleteAll}/>
+              </div>
+          )
+      }
+  })
+  
+  export default connect(state => ({
+      items: state.items,
+      filter: state.filter
+  }), dispatch => ({
+      actions: bindActionCreators(ItemsActions, dispatch)
+  }))(App);
+  ```
+  
+  ##### components
+  
+  木偶组件，各司其职，没有什么关于actions和stores的依赖，拿出项目中也可独立使用，甚至可以和别的actions，stores进行绑定。
+  
+  - SearchBar：查找Item。
+  - Content：控制Items的显示，删除一个Item。
+  - Footer：新增Item，删除全部Item。
+  
+  #### 调试工具
+  
+  使用[redux-devtools](https://github.com/gaearon/redux-devtools)调试，为你在开发过程中带来乐趣。
+  
+  ``` javascript
+  /* app/index.js */
+  
+  function renderDevTools(store) {
+    if (__DEBUG__) {
+      let {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
+      return (
+        <DebugPanel top right bottom>
+          <DevTools store={store} monitor={LogMonitor} />
+        </DebugPanel>
+      );
+    }else {
+      return null;
+    }
+  }
+  
+  React.render(
+      <div>
+          <Provider store={store}>
+              {() => <App /> }
+          </Provider>
+          {renderDevTools(store)}
+      </div>,
+      document.getElementById('app'));
+  ```
+  
+  ``` javascript
+  /* app/configureStore.js */
+  
+  var buildStore;
+  if(__DEBUG__) {
+      buildStore = compose(
+        applyMiddleware(thunk),
+        require('redux-devtools').devTools(),
+        require('redux-devtools').persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+        createStore
+      )
+  }else {
+      buildStore = compose(applyMiddleware(thunk), createStore)
+  }
+  
+  export default function configureStore(initialState) {
+      return buildStore(rootReducer, initialState);
+  }
+  ```
+  
+  在你的代码中加上上面的两段代码，运行npm run debug命令，就可以用调试工具来管理你的项目了。
+  
+  #### 写在最后
+  
+  刚接触到Redux和React技术的时候，我几乎是夜夜难以入眠的，技术革新带来的新的思想总是不断的刺激着我的大脑。非常建议你也能来试试Redux，体会我在开发中得到的这种幸福感。
+  
+  如果有任何想要了解的，欢迎来我的[github](https://github.com/matthew-sun)和我一起互动交流。
   
   ​
