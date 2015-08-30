@@ -1,3 +1,10 @@
+---
+layout: post
+title: 使用Redux管理你的React应用
+tags: [ redux，react ]
+category: Frontend
+description: Redux实践教程。
+---
 > React是最好的前端库，因为其发源于世界上最好的后端语言框架。  ---信仰
 > 
 > 4.0 will likely be the last major release. Use Redux instead. It's really great.  —Flummox框架作者  acdliteAndrew Clark
