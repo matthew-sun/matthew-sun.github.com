@@ -10,7 +10,7 @@ React的核心是使用组件定义界面的表现，是一个View层的前端�
 
 #### 为什么使用Redux？
 
-Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[实现](https://github.com/facebook/flux)来管理React应用。可是当我打开[FLUX](https://github.com/facebook/flux)的文档时候，wtf，繁琐的实现，又臭又长的文档，实在难以让我有使用它的欲望。幸好，社区中和我有类似想法的不在少数，github上也涌现了一批关于实现FLUX的框架，比较出名的有[Redux](https://github.com/rackt/redux),[Reflux](https://github.com/reflux/refluxjs),[Flummox](https://github.com/acdlite/flummox)。
+Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[实现](https://github.com/facebook/flux)来管理React应用。可是当我打开[FLUX](https://github.com/facebook/flux)的文档时候，繁琐的实现，又臭又长的文档，实在难以让我有使用它的欲望。幸好，社区中和我有类似想法的不在少数，github上也涌现了一批关于实现FLUX的框架，比较出名的有[Redux](https://github.com/rackt/redux),[Reflux](https://github.com/reflux/refluxjs),[Flummox](https://github.com/acdlite/flummox)。
 
 其中Redux的简单和有趣的编程体验是最吸引我的地方。 
 
@@ -102,7 +102,7 @@ Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[�
   
   #### Actions
   
-  Action向store派发指令，store将会根据不同的action.type来执行不同的方法。addItem函数的异步操作我使用了一点小技巧，使用[redux-thunk](https://github.com/gaearon/redux-thunk)中间件去帮助延迟action中的dispatch，dispatch是在View层用bindActionCreators绑定的。使用这个dispatch我们可以向store发送异步的指令。比如说，可以在action中放入向服务端的请求(ajax)，也强烈推荐这样去做。
+  Action向store派发指令，store将会根据不同的action.type来执行不同的方法。addItem函数的异步操作我使用了一点小技巧，使用[redux-thunk](https://github.com/gaearon/redux-thunk)中间件去改变dispatch，dispatch是在View层中用bindActionCreators绑定的。使用这个改变的dispatch我们可以向store发送异步的指令。比如说，可以在action中放入向服务端的请求(ajax)，也强烈推荐这样去做。
   
   ``` javascript
   /* app/actions/index.js */
@@ -138,7 +138,7 @@ Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[�
   
   Redux有且只有一个State状态树，为了避免这个状态树变得越来越复杂，Redux通过 Reducers来负责管理整个应用的State树，而Reducers可以被分成一个Reduce组成。
   
-  Reduce这个词好像在哪里听过，没错，这是Javascript Array的方法，只是不太常用。简单快速的用代码样例来回顾一下，如果想深入了解可以看我以前写的一篇文章[ECMA5系列介绍---Array](http://www.fehouse.com/index.php/archives/21/)。
+  Reduce在javascript Array的方法中出现过，只是不太常用。简单快速的用代码样例来回顾一下，如果想深入了解可以看我以前写的一篇文章[ECMA5系列介绍---Array](http://www.fehouse.com/index.php/archives/21/)。
   
   ``` javascript
   /* Array.prototype.reduce */
@@ -199,70 +199,85 @@ Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[�
   
   #### Middleware
   
-  占坑。
+  在Redux中，Middleware 主要是负责改变Store中的dispatch方法，从而能处理不同类型的 action 输入，得到最终的 Javascript Plain Object 形式的 action 对象。
+  
+  以[redux-thunk](https://github.com/gaearon/redux-thunk)为例子：
   
   ``` javascript
-  /* app/configureStore.js */
-  
-  import { compose, createStore, applyMiddleware } from 'redux';
-  import thunk from 'redux-thunk';
-  import rootReducer from './reducers';
-  
-  var buildStore = compose(applyMiddleware(thunk), createStore)
-  export default function configureStore(initialState) {
-      return buildStore(rootReducer, initialState);
+  /* redux-thunk */  
+  export default function thunkMiddleware({ dispatch, getState }) {
+    return next => 
+       action => 
+         typeof action === ‘function’ ? 
+           action(dispatch, getState) : 
+           next(action);
   }
+  ```
+  
+  当ThunkMiddleware 判断action传入的是一个函数，就会为该thunk函数补齐dispatch和getState参数，否则，就调用next(action)，给后续的Middleware（Middleware 插件可以被绑定多个）得到使用dispatch的机会。
+  
+  ``` javascript
+    /* app/configureStore.js */
+  
+    import { compose, createStore, applyMiddleware } from 'redux';
+    import thunk from 'redux-thunk';
+    import rootReducer from './reducers';
+  
+    var buildStore = compose(applyMiddleware(thunk), createStore)
+    export default function configureStore(initialState) {
+        return buildStore(rootReducer, initialState);
+    }
   ```
   
   #### UI
   
-  智能组件和木偶组件，因为本文主要是介绍Redux，感兴趣的同学可以看一下这篇博文[Smart and Dumb Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)。本项目中在结构上会把智能组件放在containers中，木偶组件放于components中。
+  智能组件和木偶组件，因为本文主要是介绍Redux，对这个感兴趣的同学可以看一下这篇文章[Smart and Dumb Components](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0)。本项目中在结构上会把智能组件放在containers中，木偶组件放于components中。
   
   ##### containers
   
   智能组件，会通过react-redux函数提供的connect函数把state和actions转换为旗下木偶组件所需要的props。
   
   ``` javascript
-  /* app/containers/App.js */
+    /* app/containers/App.js */
   
-  import React from 'react';
-  import SearchBar from '../components/searchBar';
-  import Content from '../components/content';
-  import Footer from '../components/footer';
-  import { connect } from 'react-redux';
-  import ImmutableRenderMixin from 'react-immutable-render-mixin';
-  import * as ItemsActions from '../actions';
-  import { bindActionCreators } from 'redux';
+    import React from 'react';
+    import SearchBar from '../components/searchBar';
+    import Content from '../components/content';
+    import Footer from '../components/footer';
+    import { connect } from 'react-redux';
+    import ImmutableRenderMixin from 'react-immutable-render-mixin';
+    import * as ItemsActions from '../actions';
+    import { bindActionCreators } from 'redux';
   
-  let App = React.createClass({
-      mixins: [ImmutableRenderMixin],
-      propTypes: {
-          items: React.PropTypes.object,
-          filter: React.PropTypes.string
-      },
-      render() {
-          let styles = {
-              width: '200px',
-              margin: '30px auto 0'
-          }
-          const actions = this.props.actions;
-          return (
-              <div style={styles}>
-                  <h2>Manage Items</h2>
-                  <SearchBar filterItem={actions.filterItem}/>
-                  <Content items={this.props.items} filter={this.props.filter} deleteItem={actions.deleteItem}/>
-                  <Footer addItem={actions.addItem} deleteAll={actions.deleteAll}/>
-              </div>
-          )
-      }
-  })
+    let App = React.createClass({
+        mixins: [ImmutableRenderMixin],
+        propTypes: {
+            items: React.PropTypes.object,
+            filter: React.PropTypes.string
+        },
+        render() {
+            let styles = {
+                width: '200px',
+                margin: '30px auto 0'
+            }
+            const actions = this.props.actions;
+            return (
+                <div style={styles}>
+                    <h2>Manage Items</h2>
+                    <SearchBar filterItem={actions.filterItem}/>
+                    <Content items={this.props.items} filter={this.props.filter} deleteItem={actions.deleteItem}/>
+                    <Footer addItem={actions.addItem} deleteAll={actions.deleteAll}/>
+                </div>
+            )
+        }
+    })
   
-  export default connect(state => ({
-      items: state.items,
-      filter: state.filter
-  }), dispatch => ({
-      actions: bindActionCreators(ItemsActions, dispatch)
-  }))(App);
+    export default connect(state => ({
+        items: state.items,
+        filter: state.filter
+    }), dispatch => ({
+        actions: bindActionCreators(ItemsActions, dispatch)
+    }))(App);
   ```
   
   ##### components
@@ -281,26 +296,26 @@ Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[�
   /* app/index.js */
   
   function renderDevTools(store) {
-    if (__DEBUG__) {
-      let {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
-      return (
-        <DebugPanel top right bottom>
-          <DevTools store={store} monitor={LogMonitor} />
-        </DebugPanel>
-      );
-    }else {
-      return null;
-    }
+  if (__DEBUG__) {
+    let {DevTools, DebugPanel, LogMonitor} = require('redux-devtools/lib/react');
+    return (
+      <DebugPanel top right bottom>
+        <DevTools store={store} monitor={LogMonitor} />
+      </DebugPanel>
+    );
+  }else {
+    return null;
+  }
   }
   
   React.render(
-      <div>
-          <Provider store={store}>
-              {() => <App /> }
-          </Provider>
-          {renderDevTools(store)}
-      </div>,
-      document.getElementById('app'));
+    <div>
+        <Provider store={store}>
+            {() => <App /> }
+        </Provider>
+        {renderDevTools(store)}
+    </div>,
+    document.getElementById('app'));
   ```
   
   ``` javascript
@@ -308,27 +323,30 @@ Facebook官方提出了FLUX思想管理数据流，同时也给出了自己的[�
   
   var buildStore;
   if(__DEBUG__) {
-      buildStore = compose(
-        applyMiddleware(thunk),
-        require('redux-devtools').devTools(),
-        require('redux-devtools').persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
-        createStore
-      )
+    buildStore = compose(
+      applyMiddleware(thunk),
+      require('redux-devtools').devTools(),
+      require('redux-devtools').persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
+      createStore
+    )
   }else {
-      buildStore = compose(applyMiddleware(thunk), createStore)
+    buildStore = compose(applyMiddleware(thunk), createStore)
   }
   
   export default function configureStore(initialState) {
-      return buildStore(rootReducer, initialState);
+    return buildStore(rootReducer, initialState);
   }
   ```
   
   在你的代码中加上上面的两段代码，运行npm run debug命令，就可以用调试工具来管理你的项目了。
   
+  #### 延伸阅读
+  
+  - [Redux Document](http://rackt.github.io/redux/index.html)
+  - [Awesome-redux](https://github.com/xgrommx/awesome-redux)
+  
   #### 写在最后
   
   刚接触到Redux和React技术的时候，我几乎是夜夜难以入眠的，技术革新带来的新的思想总是不断的刺激着我的大脑。非常建议你也能来试试Redux，体会我在开发中得到的这种幸福感。
   
-  如果有任何想要了解的，欢迎来我的[github](https://github.com/matthew-sun)和我一起互动交流。
-  
-  ​
+  如果有任何想要了解的，欢迎来我的[github](https://github.com/matthew-sun)和我一起互动交流。​
