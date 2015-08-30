@@ -57,7 +57,32 @@ React应用无刷新保存工具：[hot-loader](http://gaearon.github.io/react-h
 `2.npm install && npm start`
   
 `3.open localhost:3000`
-  
+
+####目录结构
+```
+.
++-- app
+|   +-- actions
+|       +-- index.js
+|   +-- components
+|       +-- content.js
+|       +-- footer.js
+|       +-- searchBar.js
+|   +-- constants
+|       +-- ActionTypes.js
+|   +-- containers
+|       +-- App.js
+|   +-- reducers
+|       +-- index.js
+|       +-- items.js
+|       +-- filter.js
+|   +-- utils
+|   +-- configureStore.js
+|   +-- index.js
++-- css
+|   +-- pure.min.css
++-- index.html
+```  
 #### Index.js
   
 在入口文件中，我们需要把App和redux建立起联系。Provider是react-redux提供的组件，它的作用是把store和视图绑定在了一起，这里的Store就是那个唯一的State树。当Store发生改变的时候，整个App就可以作出对应的变化。{() => <App />}是声明了一个返回<App />的函数传进Provider的props.children里，这个方法将会在React的 0.14版本得到简化。
