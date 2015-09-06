@@ -131,7 +131,7 @@ export default keyMirror({
   
 #### Actions
   
-Action向store派发指令，store将会根据不同的action.type来执行不同的方法。addItem函数的异步操作我使用了一点小技巧，使用[redux-thunk](https://github.com/gaearon/redux-thunk)中间件去改变dispatch，dispatch是在View层中用bindActionCreators绑定的。使用这个改变的dispatch我们可以向store发送异步的指令。比如说，可以在action中放入向服务端的请求(ajax)，也强烈推荐这样去做。
+Action向store派发指令，action 函数会返回一个带有 type 属性的 Javascript Plain Object，store将会根据不同的action.type来执行相应的方法。addItem函数的异步操作我使用了一点小技巧，使用[redux-thunk](https://github.com/gaearon/redux-thunk)中间件去改变dispatch，dispatch是在View层中用bindActionCreators绑定的。使用这个改变的dispatch我们可以向store发送异步的指令。比如说，可以在action中放入向服务端的请求(ajax)，也强烈推荐这样去做。
   
 ``` javascript
 /* app/actions/index.js */
