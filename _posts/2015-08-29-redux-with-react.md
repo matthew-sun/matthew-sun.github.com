@@ -58,7 +58,7 @@ React应用无刷新保存工具：[hot-loader](http://gaearon.github.io/react-h
   
 `3.open localhost:3000`
 
-####目录结构
+#### 目录结构
 ```
 .
 +-- app
