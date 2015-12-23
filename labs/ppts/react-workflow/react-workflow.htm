@@ -1,0 +1,477 @@
+<!--
+    Powered By nodePPT - This is probably the best web presentation tool so far!
+    version: 1.4.1
+    site: https://github.com/ksky521/nodePPT
+    date: 
+-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>react work flow - By 孙成瑞</title>
+    <link rel="stylesheet" media="all" href="./css/nodeppt.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="./css/phone.css">
+    
+    <link rel="stylesheet" href="./js/highlight/styles/monokai_sublime.css">
+    <link rel="stylesheet" href="./css/font-awesome.css">
+    
+<link rel="stylesheet" href="./css/theme.dark.css">
+</head>
+<body>
+<div class="slides">
+    <slides id="container">
+        <slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1>React Workflow</h1>
+<p><small>演讲者：出游服务产品部-H5研发组-孙成瑞</small></p>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>我们遇到了哪些问题</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>seajs缺少社区支持</li>
+<li>页面的http请求数过多</li>
+<li>前后端分离后，js模板难以维护</li>
+<li>DOM操作频繁，渲染效率低下</li>
+<li>各写各的代码，长期迭代项目难以维护</li>
+<li>用scss命令编译的css会带上bom信息，会导致svn提交报错</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>我们不需要打补丁的解决方案，</h2>
+<h2>我们需要的是一整套完备的<strong>前端解决方案</strong></h2>
+    <div style="text-align:center;">
+        <img src="./images/react-workflow/chenglong1.jpg" width="500">
+    </div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h1>我们的解决方案</h1>
+
+</hgroup><article>
+
+<ul>
+<li>webpack <ul class="rollIn">
+<li>NPM社区认同的模块化方案，即：ES2015 Module </li>
+<li>拥抱ES2015，引入Babel插件，实时编译，动态更新</li>
+<li>scss,css文件可以在js中引入</li>
+<li>小于8k的图片，自动base64</li>
+<li>1个HTTP请求</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h1>我们的解决方案</h1>
+
+</hgroup><article>
+
+<ul>
+<li>react+redux <ul class="rollIn">
+<li>前端强框架，提倡Web Components的代码风格</li>
+<li>用React管理组件的生命周期</li>
+<li>用Redux管理整个应用的数据流，即：单向数据流</li>
+<li>虚拟DOM，提高DOM操作的性能</li>
+<li>JSX降低了js模板的维护难度</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article class="flexbox vcenter">
+<h1><a href="http://localhost:3000" target="_blank">举个栗子</a></h1>
+    <div style="text-align:center;">
+        <img src="./images/react-workflow/chenglong2.jpg" width="365">
+    </div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h1>带来了哪些变化</h1>
+
+</hgroup><article>
+
+<ul>
+<li>基于ES2015语法开发</li>
+<li>像java一样需要编译</li>
+<li>Let&#39;s react, don&#39;t jquery.</li>
+<li>Redux数据流思想</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>webpack配置</h2>
+
+</hgroup><article>
+
+<div class="columns-1">
+    <pre><code class="javascript">module.exports = {
+  entry: [
+    './public/app/index'
+  ],
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin()
+  ],
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['babel'],
+      include: path.join(__dirname, 'public/app')
+    }, 
+    {test: /\.scss$/,loader: 'style!css!sass'},
+    {test: /\.(png|jpg|gif)$/, loader: 'url-loader?limit=8192'}]
+  }
+}</code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>ES2015 =&gt; ES5</h2>
+
+</hgroup><article>
+
+<div class="columns-2">
+    <pre><code class="javascript">
+    // a.js
+    const [b, c] = ['b', 'c'];
+
+    export default {
+        b,
+        c
+    }
+
+    // main.js
+    import { b, c } from 'a';
+
+    let fn = () => {
+        console.log(b)
+        console.log(c)
+    }
+
+    fn();
+    </code></pre>
+    <pre><code class="javascript">
+    // a.js
+    var b = 'b';
+    var c= 'c';
+
+    module.exports = {
+        b: b,
+        c: c
+    }
+
+    // main.js
+    var a = require('a');
+
+    var fn = function() {
+        console.log(a.b);
+        console.log(a.c);
+    }
+
+    fn();
+    </code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>React+Redux</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>虚拟DOM<ul>
+<li>快</li>
+<li>全端能力</li>
+</ul>
+</li>
+<li>Redux<ul>
+<li>目前最流行的FLUX库，react的state管理框架</li>
+<li>简单易维护，Redux只有唯一的state树</li>
+<li>极致的开发体验，实时编程，调试工具</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Smart and Dumb Components</h2>
+<h2>智慧组件和木偶组件</h2>
+
+</hgroup><article>
+
+    <div style="text-align:center;">
+        <img src="./images/react-workflow/muou.jpg" width="365">
+    </div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>Before</h2>
+<div class="columns-1">
+    <pre><code>// CommentList.js
+class CommentList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { comments: [] }
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: "/my-comments.json",
+      success: function(comments) {
+        this.setState({comments: comments});
+      }.bind(this)
+    });
+  }
+
+  render() {
+    return <span><</span>ul<span>></span> {this.state.comments.map(renderComment)} <span><</span>/ul<span>></span>;
+  }
+
+  renderComment({body, author}) {
+    return <span><</span>li<span>></span>{body}—{author}<span><</span>/li<span>></span>;
+  }
+}</code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>木偶组件</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>木偶组件没有自己的逻辑和数据，数据和逻辑通常在智慧组件里定义，通过props传递</li>
+<li>有自己的dom结构，和css样式</li>
+<li>基本是一个独立组件，有时可能会用到其他的木偶组件，但绝不会用智慧组件</li>
+<li>没有自己的state</li>
+<li>比如：产品卡片，用户信息栏</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>木偶组件</h2>
+<div class="columns-1">
+    <pre><code>// CommentList.js
+
+class CommentList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() { 
+    return <span><</span>ul<span>></span> {this.props.comments.map(renderComment)} <span><</span>/ul<span>></span>;
+  }
+
+  renderComment({body, author}) {
+    return <span><</span>li<span>></span>{body}—{author}<span><</span>/li<span>></span>;
+  }
+}</code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>智慧组件</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>包含别的智慧组件或木偶组件</li>
+<li>没有自己的DOM结构，所以通常也没有自己的样式</li>
+<li>从FLUX框架里接收State的改变和逻辑方法，通过props传递到木偶组件里去</li>
+<li>比如侧边栏，聊天窗口等</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>智慧组件</h2>
+<div class="columns-1">
+    <pre><code>// CommentListContainer.js
+
+class CommentListContainer extends React.Component {
+  constructor() {
+    super();
+    this.state = { comments: [] }
+  }
+
+  componentDidMount() {
+    $.ajax({
+      url: "/my-comments.json",
+      dataType: 'json',
+      success: function(comments) {
+        this.setState({comments: comments});
+      }.bind(this)
+    });
+  }
+
+  render() {
+    return <span><</span>CommentList comments={this.state.comments} <span>/></span>;
+  }
+}</code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>使用智慧组件和木偶组件的好处</h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>职责分离。强迫用这样的方式编写应用，可以帮助开发人员更容易理解应用的逻辑和UI</li>
+<li>重用。木偶组件可以被不同的智慧组件驱动</li>
+<li><div class="columns-1">
+  <p>项目结构</p>
+  <pre>.
++-- app
+|   +-- components
+|       +-- content.js
+|       +-- footer.js
+|       +-- searchBar.js
+|   +-- containers
+|       +-- App.js</pre>
+</div></li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Redux单向数据流模式</h2>
+
+</hgroup><article>
+
+    <div style="text-align:center;">
+        <img src="./images/react-workflow/redux.jpg" width="865">
+    </div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>Redux代码示例</h2>
+
+</hgroup><article>
+
+<div class="columns-1">
+    <pre><code class="javascript">import { createStore } from 'redux';
+
+function counter(state = 0, action) {
+  switch (action.type) {
+  case 'INCREMENT':
+    return state + 1
+  case 'DECREMENT':
+    return state - 1
+  default:
+    return state
+  }
+}
+
+let store = createStore(counter)
+
+store.subscribe(() =>
+  console.log(store.getState())
+)
+
+store.dispatch({ type: 'INCREMENT' }) // 1
+store.dispatch({ type: 'INCREMENT' }) // 2
+store.dispatch({ type: 'DECREMENT' }) // 3
+    </code></pre>
+</div>
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><hgroup>
+<h2>实际项目中使用React的<strong>风险</strong></h2>
+
+</hgroup><article>
+
+<ul class="rollIn">
+<li>学习成本</li>
+<li>移动端<ul class="rollIn">
+<li>文件体积</li>
+<li>React插件还没有Zepto那么多</li>
+</ul>
+</li>
+<li>PC<ul class="rollIn">
+<li>动画</li>
+<li>低版本浏览器的兼容</li>
+</ul>
+</li>
+</ul>
+
+</article></section></slide>
+<slide class="slide"><section class="slide-wrapper"><article>
+<h2>THANKS &amp; QA</h2>
+
+</article></section></slide>
+        
+
+        <!-- <slide class="slide logoslide dark nobackground">
+            <article class="flexbox vcenter">
+                <h2 style="color: white;">Powered By nodePPT v1.4.1</h2>
+            </article>
+        </slide> -->
+        <div class="slideTip" id="tip"></div>
+    </slides>
+</div>
+<canvas id="drawBoard" class="draw-board" width="900" height="700"></canvas>
+<div class="progress"><span id="progress"></span></div>
+<div id="_buttons">
+    <div class="_btn-box" id="_btn-box" style="display:none;">
+        <button class="fa fa-arrow-circle-left" id="_btn-prev"></button>
+        <button class="fa fa-arrow-circle-right" id="_btn-next"></button>
+        <button class="fa fa-paint-brush" id="_btn-brush"></button>
+        <button class="fa fa-compress" id="_btn-overview" data-toggle="fa fa-expand"></button>
+    </div>
+    <button class="fa fa-bars" id="_btn-bar"  data-toggle="fa fa-close"></button>
+</div>
+<script src="./js/mixjs/lib/mix.0.3.0.min.js"></script>
+<script>
+var base = location.protocol + '//' + location.host;
+
+var path = (location.pathname + '#').split('/').filter(function(v){
+    return !!v;
+});
+path.pop();
+path = path.join('/');
+MixJS.config({
+    baseURL: [ base, path, 'js'].join('/')+'/'
+});
+
+</script>
+<script src="./js/mixjs/lib/event/broadcast.js"></script>
+<script src="./js/nodeppt.js"></script>
+<script>
+Slide.init({
+    containerID: 'container',
+    drawBoardID: 'drawBoard',
+    slideClass: '.slide',
+    buildClass: '.build',
+    progressID: 'progress',
+    transition: 'slide',
+    width: 1100,
+    dir: './',
+    
+    //打开下面的注释就开启postMessage方式
+    //访问网址127.0.0.1:8080/ppt/demo#client
+    control:{
+        type: 'postMessage',
+        args:{
+            isControl:  false
+        }
+    },
+    
+    tipID: 'tip'
+});
+MixJS.loadJS('highlight/highlight.pack.js',function(){
+    hljs.tabReplace = '  ';
+    hljs.initHighlightingOnLoad();
+});
+</script>
+<script src="./js/demo.js"></script>
+<link rel="stylesheet" href="./css/demo.css">
+<script src="./js/zoom.js"></script>
+
+<!-- MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+  config: ["TeX-AMS-MML_HTMLorMML.js"],
+  tex2jax: {inlineMath: [['\\(','\\)']]}});
+  //['$','$'], 避免货币价格冲突
+</script>
+<script type="text/javascript" src="./js/mathjax/MathJax.js"></script>
+
+<!--placeholder-->
+</body>
+</html>
